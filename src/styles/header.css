@@ -1,0 +1,77 @@
+.overlay {
+  position: absolute;
+  top: 90px; 
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 290px); /* Subtract header height from the total viewport height */
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 999; /* Ensure it is below the header */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: slideDown 0.5s ease-in-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.overlay h1 {
+  font-size: 2rem;
+  color: #0f0f0f;
+}
+
+.overlay ul {
+  font-size: 1rem;
+  list-style: none;
+}
+
+.overlay a {
+  text-decoration: none;
+  color: #009837;
+  display: block;
+  padding: 10px 0;
+}
+
+.overlay a:hover {
+  color: #007b5e;
+}
+
+/* Menu hover effect */
+.nav-spaced .nav-link {
+  position: relative;
+  padding-bottom: 8px; /* Add some space to accommodate the border */
+}
+
+.nav-spaced .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #009837; /* Color of the border */
+  transition: width 0.3s ease-in-out; /* Smooth transition */
+}
+
+.nav-spaced .nav-link:hover::after {
+  width: 100%;
+  height: 4px; /* Full width on hover */
+}
+
+
+@media (max-width: 768px) {
+  .overlay {
+    display: none;
+  }
+}
+
+
+.wbkit::-webkit-scrollbar {
+  display:  none;
+}

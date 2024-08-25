@@ -1,0 +1,157 @@
+
+  /* ######################Header################################# */
+  .nav-spaced .nav-link {
+    margin-right: 10px; /* Adjust the value to your preference */
+    padding-right: 0; /* Remove extra padding */
+  }
+  
+  .nav-spaced .nav-link:last-child {
+    margin-right: 0; /* Remove margin from the last link */
+  }
+
+  
+  
+  .contact-us-button {
+    position: absolute;
+    /* z-index: 10;  */
+  }
+
+  .hero-bg {
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.3s ease-in-out;
+    position: relative;
+  }
+
+  .banner-container {
+    background-image: url('/assets/hero/banner-container.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+}
+.bottom-container {
+ 
+  background-color: rgba(102, 102, 103, 0.1); /* #666667 with 10% opacity */
+}
+.rounded-tl-lg{
+  width: 25rem;
+  height: auto;
+ 
+}
+.bottom-container {
+  background: #6666671A;
+  border-radius: 0px, 180px, 0px, 80px;
+}
+.custom-radius{
+  border-top-left-radius: 3.5rem;
+}
+.whtwedo_img2{
+  border-top-left-radius: 3.5rem;
+}
+.custom-radius{
+  border-top-left-radius: 3.5rem;
+} 
+/* .card_3{
+  width: 20rem;
+  height: 52vh;
+} */
+
+
+.no-border{
+  border: none;
+  background-color: transparent;
+  line-height: 30px;
+}
+/* Add this to your global CSS file (e.g., globals.css) */
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
+
+.slider-wrapper {
+  overflow: hidden; /* Hide overflowing content */
+  width: 100%; /* Full width */
+}
+
+.animate-scroll {
+  display: flex;
+  animation: scroll 20s linear infinite;
+  /* Duplicate the content for infinite scrolling */
+}
+
+.animate-scroll::after {
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  min-width: 100%; /* Ensure continuity of the scroll */
+  transform: translateX(100%);
+}
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .eventImage {
+    border-radius: 80px 0px 80px 0px;
+    /* box-shadow: -10px 24px 14px 0px #00000026; */
+  }
+  .eventImage1 {
+    border-radius: 0px, 80px, 0px, 80px;
+    /* box-shadow: -10px 24px 14px 0px #00000026; */
+  }
+  .mapdesec_right {
+    width: 100%;
+    height: 400px; /* Example height */
+    position: relative; /* Ensures that any absolute positioning inside the map works correctly */
+  }
+  
+
+
+  /* #######################################  Investor ################################# */
+  
+ /* styles.css or global.css */
+
+.investor-background {
+  background-image: url('/assets/investor/investor.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: auto;
+}
+.light-placeholder::placeholder {
+  color: #cccccc; 
+  opacity: 1;
+}
+.active-button {
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.20000000298023224px;
+  text-align: left;
+  color: #009837;
+}
+/* .rounded-tl-lg.w-full.h-auto.custom-radius.border-none.card {
+  margin-right: 20px;
+} */
+slick-dots {
+  position: absolute;
+  bottom: 52px !important;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;}
