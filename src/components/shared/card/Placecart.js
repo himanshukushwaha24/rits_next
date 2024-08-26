@@ -57,10 +57,13 @@
 
 
 import React from "react";
+import { useState } from "react";
 import { CardBody } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 
 const Placecart = ({ onCitySelect }) => {
+  const [selectedCity, setSelectedCity] = useState(null);
+
   const cities = [
     {
       name: "New York",
@@ -97,22 +100,28 @@ const Placecart = ({ onCitySelect }) => {
     },
   ];
 
+
   return (
-    <Card className="w-full h-auto md:w-full md:h-auto overflow-x-auto md:overflow-x-hide scroll-responsive">
-      <div className="flex md:flex-col gap-1 md:px-0">
+    <Card className="w-full h-auto md:w-full md:h-auto overflow-x-auto md:overflow-x-hidden scroll-responsive bg-[#EAEAEA] ">
+      <div className="flex md:flex-col gap-1 md:px-0 bg-white">
         {cities.map((city) => (
           <CardBody
             key={city.name}
-            onClick={() =>
+            onClick={() => {
               onCitySelect({
                 lat: city.lat,
                 lng: city.lng,
                 maplink: city.maplink,
-              })
-            }
+              });
+              setSelectedCity(city.name);
+            }}
+            
+            
             className="hover:cursor-pointer"
           >
-            <div className="min-w-[500px] flex flex-col justify-between bg-[#FFFFFF] py-2 shadow-md">
+            <div className={`min-w-[350px] flex flex-col justify-between py-2 shadow-md ${
+  selectedCity === city.name ? 'bg-[#FFFFFF]' : 'bg-[#EAEAEA]'
+}`}>
               <span className="font-[500px] text-[20px] leading-6 text-[#575757] mb-2">
                 {city.name}
               </span>

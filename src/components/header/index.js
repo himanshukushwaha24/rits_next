@@ -10,7 +10,7 @@ function Headers() {
   const [showAccountingSubpoints, setShowAccountingSubpoints] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
 
-  const handleToggleOverlay = () => {
+  const handleToggleOverlay = () => { 
     setOverlayVisible(true);
   };
 

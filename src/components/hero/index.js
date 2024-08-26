@@ -69,7 +69,7 @@ const HeroSection = () => {
       {/* Text Overlay for First Three Images */}
       {currentImageIndex < 3 && (
         <div className="absolute inset-0 flex flex-col items-start justify-center bg-black  bg-opacity-50 pl-20 ">
-          <h1 className="text-white text-[38px] md:text-[53px] font-[700]  leading-[72px] letter-spacing-[0.01em] text-left font-lato mb-0 md:mb-8 mt-[-130px]">
+          <h1 className="text-white absolute z-10 text-[38px] md:text-[53px] font-[700]  leading-[72px] letter-spacing-[0.01em] text-left font-lato mb-0 md:mb-8 mt-[-130px]">
   Empowering Your Financial Future <br />
   with Innovative Investment <br />
   Solutions

@@ -2,7 +2,7 @@ import Card from "react-bootstrap/Card";
 import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-function Cardtwo({showWhatsAppIcon,selectedTitle}) {
+function Cardtwo({showWhatsAppIcon,selectedTitle,currentImage}) {
   const whatsAppLinks = {
     "Pre-IPO & Unlisted Equities": "https://chat.whatsapp.com/LSUnSmEfCWB7Wigomyg7CU",
     "Accounting and tax services support": "https://chat.whatsapp.com/B6MQCCWPLS8AosK7U6wiIp"
@@ -17,12 +17,13 @@ function Cardtwo({showWhatsAppIcon,selectedTitle}) {
           <div className="whatwedo_img relative h-[400px] md:h-[400px]  w-full md:w-[350px]">
             <Image
               className="whtwedo_img2 md:ml-[-25px] md:mt-[30px] "  
-              src="/assets/whatwedo/whatwedo1.png"
+              src={currentImage}
               alt="What We Do 1"
               layout="fill"
             //   objectFit="cover"
             />
           </div>
+          
        
       </Card>
       <div className="relative w-full">
@@ -31,7 +32,7 @@ function Cardtwo({showWhatsAppIcon,selectedTitle}) {
         href={whatsAppLinks[selectedTitle]}
           title="click to open whatsapp chat"
         >
-          <button className="btn btn-success w-full md:w-[200px] text-sm whitespace-nowrap mt-[10px] md:mt-[-30px] md:ml-[130px]">
+          <button className="btn btn-success w-full md:w-[200px] text-sm whitespace-nowrap mt-[10px] md:mt-[-30px] md:ml-[130px] ">
             <FontAwesomeIcon icon={faWhatsapp} /> Join WhatsApp Group
           </button>
         </a>

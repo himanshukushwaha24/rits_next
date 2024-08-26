@@ -24,10 +24,10 @@ function SimpleSlider() {
   };
 
   return (
-    <div className="slider-container max-w-full px-4">
+    <div className="slider-container max-w-full px-4 hidden lg:block">
       <Slider {...settings}>
         <div className="">
-          <Card className="w-full  border-none shadow-xl">
+          <Card className="w-full  border-none">
             <Card.Body className="flex flex-col md:flex-row justify-evenly space-y-4 md:space-y-0">
               <div className="card_left w-full md:w-[45%]">
                 <Card className="w-full h-auto bg-white shadow-sm border-none">
@@ -168,8 +168,8 @@ function SimpleSlider() {
                 </Card>
               </div>
 
-              <div className="card_right w-full md:w-[45%]">
-                <Card className="w-full h-auto bg-white shadow-md border-none">
+              <div className="card_right w-full md:w-[45%] flex justify-center items-center">
+                <Card className="w-full h-auto bg-white  border-none flex justify-center items-center">
                   {/* <Image
                     src="/assets/events/events1.png"
                     alt="Event Image"
@@ -296,8 +296,8 @@ function SimpleSlider() {
                   </Card>
                 </div>
 
-                <div className="card_right w-full md:w-[45%]">
-                  <Card className="w-full bg-white shadow-md border-none">
+                <div className="card_right w-full md:w-[45%] ">
+                  <Card className="w-full bg-white shadow-md border-none ">
                     {/* <Image
                     src="/assets/events/events1.png"
                     alt="Event Image"
@@ -306,9 +306,9 @@ function SimpleSlider() {
                     layout="responsive"
                     className="rounded-t-md"
                   /> */}
-                    <CardBody>
+                    <div className="flex justify-center items-center">
                       <EventSlider />
-                    </CardBody>
+                    </div>
 
                     <Form>
                       <Form.Group className="mb-3" controlId="formGroupEmail">

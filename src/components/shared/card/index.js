@@ -11,7 +11,22 @@ function Cardform({ onButtonClick }) {
   const [openSection, setOpenSection] = useState(null);
   const [arrowRotations, setArrowRotations] = useState({});
 
-  
+
+  const handleSmartModelPortfolioClick = () => {
+    onButtonClick('Smart Model Portfolio', 'This is the content for Smart Model Portfolio', '/assets/whatwedo/whatwedo2.png'); // Pass the new image URL
+  };
+  const handlePreIpoListedClick = () => {
+    onButtonClick('Smart Model Portfolio', 'This is the content for preIpo ', '/assets/whatwedo/whatwedo1.png'); // Pass the new image URL
+  };
+  const handleWealthMangement = () => {
+    onButtonClick('Wealth Mangement', 'This is the content for Wealth Mangement ', '/assets/whatwedo/whatwedo3.png'); // Pass the new image URL
+  };
+  const handleInvestmentBanking = () => {
+    onButtonClick('Investment Banking', 'This is the content for Investment Banking ', '/assets/whatwedo/whatwedo4.png'); // Pass the new image URL
+  };
+  const handleAccountingTax = () => {
+    onButtonClick('Accounting Tax', 'This is the content for Accounting Tax ', '/assets/whatwedo/whatwedo1.png'); // Pass the new image URL
+  };
 
  useEffect(() => {
     handleButtonClick([
@@ -296,7 +311,7 @@ const accountTaxServices = [
       activeButton === "Pre-IPO & Unlisted Equities" ? "active-button" : ""
     }`}
   >
-    Pre-IPO & Unlisted Equities
+   <span onClick={handlePreIpoListedClick}>Pre-IPO & Unlisted Equities</span> 
     {/* {isMounted && activeButton === "Pre-IPO & Unlisted Equities" && ( */}
       <Image
         src="/assets/events/arrowicon.png"
@@ -324,7 +339,7 @@ const accountTaxServices = [
       activeButton === "Smart Model Portfolio" ? "active-button" : ""
     }`}
   >
-    Smart Model Portfolio
+     <span onClick={handleSmartModelPortfolioClick}>Smart Model Portfolio</span>
     {/* {isMounted && activeButton === "Smart Model Portfolio" && ( */}
       <Image
         src="/assets/events/arrowicon.png"
@@ -343,7 +358,7 @@ const accountTaxServices = [
       openSection === "Wealth Management Services" ? "active-button" : ""
     }`}
   >
-    Wealth Management Services
+   <span onClick={handleWealthMangement}>Wealth Management Services</span> 
     {/* {isMounted && openSection === "Wealth Management Services" && ( */}
     
       <Image
@@ -388,7 +403,7 @@ const accountTaxServices = [
       openSection === "Investment banking" ? "active-button" : ""
     }`}
   >
-    Investment banking
+    <span onClick={handleInvestmentBanking}>Investment banking</span>
     {/* {isMounted && openSection === "Investment banking" && ( */}
       <Image
         src="/assets/events/arrowicon.png"
@@ -435,7 +450,7 @@ const accountTaxServices = [
       openSection === "Accounting and tax services support" ? "active-button" : ""
     }`}
   >
-    Accounting and tax services support
+   <span onClick={handleAccountingTax}> Accounting and tax services support</span>
     {/* {isMounted && openSection === "Accounting and tax services support" && ( */}
       <Image
         src="/assets/events/arrowicon.png"

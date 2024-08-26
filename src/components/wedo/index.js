@@ -8,7 +8,10 @@ const WhatweDo = () => {
   const [paragraphContent, setParagraphContent] = useState('');
   const [selectedTitle, setSelectedTitle] = useState('');
   const [showWhatsAppIcon, setShowWhatsAppIcon] = useState(false);
-  const handleButtonClick = (paragraphContent,title) => {
+  const [currentImage, setCurrentImage] = useState('/assets/whatwedo/whatwedo2.png');
+
+
+  const handleButtonClick = (paragraphContent,title,newImage) => {
     if (title === "Pre-IPO & Unlisted Equities" || title === "Accounting and tax services support") {
       setShowWhatsAppIcon(true);
     } else {
@@ -26,6 +29,9 @@ const WhatweDo = () => {
     } else {
       
       setParagraphContent(paragraphContent);
+    }
+    if (newImage) {
+      setCurrentImage(newImage);
     }
     
   };
@@ -47,7 +53,8 @@ const WhatweDo = () => {
           </div>
           <div className="bottom-container flex flex-col md:flex-row w-full md:w-[90vw] h-auto  flex justify-evenly  rounded-tr-[100px] py-10">
             <Cardform onButtonClick={handleButtonClick} />
-            <Cardtwo showWhatsAppIcon={showWhatsAppIcon} selectedTitle={selectedTitle}/>
+            <Cardtwo showWhatsAppIcon={showWhatsAppIcon} selectedTitle={selectedTitle} 
+            currentImage={currentImage} />
             <Cardthree paragraphContent={paragraphContent}  title={selectedTitle} />
           </div>
         </div>

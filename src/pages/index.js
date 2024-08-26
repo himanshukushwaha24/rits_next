@@ -12,6 +12,11 @@ import Map from "@/components/shared/card/mapcomponent";
 import InvestorForm from "@/components/shared/form/investorform";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PreviousNextMethods from "@/components/shared/card/mobievents";
+import Mobieventsright from "@/components/shared/card/mobieventsright";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
+
 const Home = () => {
   const [selectedCity, setSelectedCity] = useState({
     name: "New York",
@@ -24,6 +29,20 @@ const Home = () => {
   const handleCityChange = (cityCoords) => {
     setSelectedCity(cityCoords);
   };
+
+  const handleNext = () => {
+    const nextIndex = (currentImageIndex + 1) % imagePaths.length;
+    setCurrentImageIndex(nextIndex);
+    setBackgroundImage(imagePaths[nextIndex]);
+  };
+
+  const handlePrev = () => {
+    const prevIndex =
+      currentImageIndex === 0 ? imagePaths.length - 1 : currentImageIndex - 1;
+    setCurrentImageIndex(prevIndex);
+    setBackgroundImage(imagePaths[prevIndex]);
+  };
+
   return (
     <>
       <Layout>
@@ -75,14 +94,18 @@ const Home = () => {
         </section>
 
         <section className="events w-full  bg-[#F0F0F0]">
-          <div className=" w-full md:w-[98vw]  bg-[#FFFFFF] ">
+          <div className=" w-full md:w-[98vw]  bg-[#FFFFFF] py-10">
             <h1 className="text-[48px] leading-[60px] text-[#0F0F0F] flex justify-center items-center py-4">
               Events
             </h1>
             <div className="event_container ">
               <SimpleSlider />
+             <Mobieventsright/>
+              <PreviousNextMethods/>
+             
             </div>
           </div>
+         
         </section>
         {/* <section className="insight w-full h-auto bg-[#FFFFFF] py-10 overflow-hidden">
           <div className="flex w-full overflow-hidden">

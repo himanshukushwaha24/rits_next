@@ -99,13 +99,13 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex space-x-4 mt-4">
-              <a href="#" className="text-gray-600">
+              <a href="https://www.linkedin.com/company/rits-capital/" className="text-gray-600">
                 <FontAwesomeIcon icon={faLinkedin} />
               </a>
-              <a href="#" className="text-gray-600">
+              <a href="https://www.instagram.com/rits_capital/" className="text-gray-600">
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
-              <a href="#" className="text-gray-600">
+              <a href="https://www.facebook.com/profile.php?id=61554233074916" className="text-gray-600">
                 <FontAwesomeIcon icon={faFacebook} />
               </a>
             </div>

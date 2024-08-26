@@ -98,6 +98,7 @@ function EventSlider() {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
+    arrow:false,
     autoplaySpeed: 3000,
     waitForAnimate: false,
     
@@ -107,14 +108,14 @@ function EventSlider() {
     <div className="slider-container" style={{width:"400px"}}>
       
       <Slider {...settings}>
-        <div className="image-wrapper">
+        <div className="image-wrapper ">
           <Image
              src="/events/events55.jpg"
             alt="Event 1"
             layout="responsive"  // Use 'responsive' layout instead of 'fill'
             width={30}  // Specify width and height for 'responsive' layout
             height={30}
-            className="image-style"
+            className="image-style eventborder_radius"
           />
         </div>  
         <div className="image-wrapper">
@@ -124,7 +125,7 @@ function EventSlider() {
             layout="responsive"
             width={80}
             height={50}
-            className="image-style"
+            className="image-style eventborder_radius"
           />
         </div>
         <div className="image-wrapper">
@@ -134,7 +135,7 @@ function EventSlider() {
             layout="responsive"
             width={80}
             height={50}
-            className="image-style"
+            className="image-style eventborder_radius"
           />
         </div>
         <div className="image-wrapper">
@@ -144,7 +145,7 @@ function EventSlider() {
             layout="responsive"
             width={80}
             height={50}
-            className="image-style"
+            className="image-style eventborder_radius"
           />
         </div>
       </Slider>
