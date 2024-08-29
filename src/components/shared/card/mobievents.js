@@ -97,7 +97,7 @@ function PreviousNextMethods() {
     rel="noopener noreferrer"
     className="text-[22px] text-[#0F0F0F] font-semibold"
   >
-    Rits Capital Startup Pitch Day
+    Climifi Investors’ Day 2.0
   </Link>
 </div>
 

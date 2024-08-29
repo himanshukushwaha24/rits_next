@@ -33,13 +33,13 @@
 
 .overlay a {
   text-decoration: none;
-  color: #009837;
+  color: black;
   display: block;
   padding: 10px 0;
 }
 
 .overlay a:hover {
-  color: #007b5e;
+  color: #0e9f7d;
 }
 
 /* Menu hover effect */

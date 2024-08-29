@@ -25,9 +25,9 @@ div,section,main,header,footer,h1,h2,h3,h4,h5,h6 {
 .headerWrap .navbar-nav .nav-link.active, .navbar-nav .nav-link, .headerWrap .navbar-nav .nav-link.active, .navbar-nav .nav-link.show, .headerWrap .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover{
     color: #000;
 }
-.headerWrap.bg-body-tertiary{
+/* .headerWrap.bg-body-tertiary{
     background-color: transparent !important;
-}
+} */
 .navbar-brand{
     color: #000 !important;
 }
@@ -59,3 +59,14 @@ div,section,main,header,footer,h1,h2,h3,h4,h5,h6 {
         text-align: center;
     }
 }
+
+.font-lato {
+    font-family: 'Lato', sans-serif;
+  }
+  
+  .active-button {
+    /* Ensure font-family is not overridden here */
+    font-family: 'Lato', sans-serif; /* explicitly define font-family */
+    /* Any other styles for the active state */
+  }
+  

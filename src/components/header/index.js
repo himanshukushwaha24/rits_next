@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React, { useState, useEffect } from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Card, CardBody, Container, Nav, Navbar } from "react-bootstrap";
 import Image from "next/image";
 
 function Headers() {
@@ -10,12 +10,20 @@ function Headers() {
   const [showAccountingSubpoints, setShowAccountingSubpoints] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
 
-  const handleToggleOverlay = () => { 
+  const handleToggleOverlay = () => {
     setOverlayVisible(true);
   };
 
   const handleMenuItemClick = (menu) => {
-    setActiveSubmenu(menu === activeSubmenu ? null : menu);
+    if (menu === "wealth") {
+      setActiveSubmenu("wealth");
+    } else if (menu === "banking") {
+      setActiveSubmenu("banking");
+    } else if (menu === "accounting") {
+      setActiveSubmenu("accounting");
+    } else {
+      setActiveSubmenu(null);
+    }
   };
 
   const handleClickOutside = (event) => {
@@ -92,7 +100,7 @@ function Headers() {
         expand="lg"
         className="bg-body-tertiary headerWrap bg-transparent shadow-lg"
       >
-        <Container>
+        <Container className="">
           <Navbar.Brand href="#home">
             <div className="flex items-center">
               <Image
@@ -106,17 +114,17 @@ function Headers() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto nav-spaced">
-              <Nav.Link href="#">About</Nav.Link>
+            <Nav className="me-auto nav-spaced ">
+              {/* <Nav.Link href="#">About</Nav.Link> */}
               <Nav.Link
                 href="#"
-                // onClick={handleToggleOverlay}
                 onMouseEnter={handleToggleOverlay}
                 className="what-we-do-btn"
+                suppressHydrationWarning={true}
               >
                 What We Do
               </Nav.Link>
-              <Nav.Link href="#">Insight</Nav.Link>
+              {/* <Nav.Link href="#">Insight</Nav.Link> */}
               <Nav.Link href="#career">Career</Nav.Link>
             </Nav>
 
@@ -142,43 +150,155 @@ function Headers() {
       </Navbar>
 
       {isOverlayVisible && (
-        <div className="overlay hidden md:flex">
-          <div className="container-fluid d-flex justify-content-center align-items-center flex-column text-center">
-            <ul className="list-unstyled text-start">
+        <div className="overlay hidden md:flex bg-[#F9F9F9]">
+          <Card className="container-fluid flex justify-center  border-none items-center flex-col text-start mr-[150px]">
+            <CardBody className="">
+            <ul className="list-unstyled text-start ">
               <li onMouseEnter={() => setActiveSubmenu(null)}>
-                <a href="#investor-form">Pre IPO & Unlisted Equities</a>
-              </li>
-              <li onMouseEnter={() => setActiveSubmenu(null)}>
-                <a href="#investor-form">Smart Model Portfolio</a>
+                <a
+                  className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
+                  href="#investor-form"
+                >
+                  Pre IPO & Unlisted Equities
+                </a>
               </li>
               <li
                 onMouseEnter={() => handleMenuItemClick("wealth")}
-                // onMouseLeave={() => handleMenuItemClick("wealth")}
+                // onMouseLeave={() => handleMenuItemClick("")}
               >
-                <a href="#" onClick={() => handleMenuItemClick("wealth")}>
-                  Wealth Management Services
+                <a
+                  className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold "
+                  href="#"
+                  onClick={() => handleMenuItemClick("wealth")}
+                  style={{ display: "flex", alignItems: "center" }} // Ensures proper alignment
+                >
+                 <span> Wealth Management Services</span>
+                  <span className="ml-auto">
+                    <Image
+                      src="/assets/events/arrowicon.png"
+                      alt="arrow icon"
+                      width={16}
+                      height={16}
+                      className={`transition-opacity duration-200 ${
+                        activeSubmenu === "wealth" ? "opacity-100" : "opacity-0"
+                      }`}
+                    />
+                  </span>
                 </a>
               </li>
+
+              <li onMouseEnter={() => setActiveSubmenu(null)}>
+                <a
+                  className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
+                  href="#investor-form"
+                >
+                  Smart Model Portfolio
+                </a>
+              </li>
+
               <li
                 onMouseEnter={() => handleMenuItemClick("banking")}
-                // onMouseLeave={handleMouseLeaveBanking}
+                // onMouseLeave={() => handleMenuItemClick("")} // optional if you want to handle mouse leave differently
               >
-                <a href="#" onClick={() => handleMenuItemClick("banking")}>
-                  Investment Banking
+                <a
+                  className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
+                  href="#"
+                  onClick={() => handleMenuItemClick("banking")}
+                  style={{ display: "flex", alignItems: "center" }} // Ensures proper alignment
+                >
+                <span>Investment Banking</span>
+                  <span className="ml-auto">
+                    {activeSubmenu === "banking" && (
+                      <Image
+                        src="/assets/events/arrowicon.png"
+                        alt="arrow icon"
+                        width={16}
+                        height={16}
+                        className="transition-opacity duration-200 opacity-100" // Smooth transition effect
+                      />
+                    )}
+                  </span>
                 </a>
               </li>
+
               <li
                 onMouseEnter={() => handleMenuItemClick("accounting")}
                 // onMouseLeave={handleMouseLeaveAccounting}
+                className="relative transition-all duration-300 ease-in-out h-auto py-2"
               >
-                <a href="#" onClick={() => handleMenuItemClick("accounting")}>
-                  Accounting and Tax Services Support
+                <a
+                  className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
+                  href="#"
+                  onClick={() => handleMenuItemClick("accounting")}
+                >
+                  <span className="flex justify-between items-center flex-grow text-[18px] ">
+                    Accounting and Tax Services Support
+                    {activeSubmenu === "accounting" && (
+                      <Image
+                        src="/assets/events/arrowicon.png"
+                        alt="arrow icon"
+                        width={16}
+                        height={16}
+                        className="ml-[10px] transition-opacity duration-300 ease-in-out opacity-100"
+                      />
+                    )}
+                    {activeSubmenu !== "accounting" && (
+                      <Image
+                        src="/assets/events/arrowicon.png"
+                        alt="arrow icon"
+                        width={16}
+                        height={16}
+                        className="ml-[10px] transition-opacity duration-300 ease-in-out opacity-0"
+                      />
+                    )}
+                  </span>
                 </a>
               </li>
+
+              <li
+                onMouseEnter={() => handleMenuItemClick("startup")}
+                // onMouseLeave={handleMouseLeaveStartup}
+                className="relative transition-all duration-300 ease-in-out"
+              >
+                <a
+                  className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
+                  href="#"
+                  onClick={() => handleMenuItemClick("startup")}
+                >
+                  <span className="flex items-center text-[18px] ">
+                    Startup Fundraise Support
+                    {activeSubmenu === "startup" && (
+                      <Image
+                        src="/assets/events/arrowicon.png"
+                        alt="arrow icon"
+                        width={16}
+                        height={16}
+                        className="ml-[10px] transition-opacity duration-300 ease-in-out opacity-100"
+                      />
+                    )}
+                    {activeSubmenu !== "startup" && (
+                      <Image
+                        src="/assets/events/arrowicon.png"
+                        alt="arrow icon"
+                        width={16}
+                        height={16}
+                        className="ml-[10px] transition-opacity duration-300 ease-in-out opacity-0"
+                      />
+                    )}
+                  </span>
+                </a>
+              </li>
+
               <li onMouseEnter={() => setActiveSubmenu(null)}>
-                <a href="https://climifi.com/">Sustainable Investing</a>
+                <a
+                  className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
+                  href="https://climifi.com/"
+                >
+                  Sustainable Investing
+                </a>
               </li>
             </ul>
+            </CardBody>
             {/* Render Submenu based on the active menu */}
             {activeSubmenu === "wealth" && (
               <div
@@ -186,22 +306,22 @@ function Headers() {
                 onMouseLeave={handleMouseLeaveWealth}
               >
                 <div
-                  className="p-3 rounded-lg ml-[-150px]"
+                  className="p-3 rounded-lg ml-[-150px] shadow-sm bg-white"
                   style={{ width: "400px" }}
                 >
                   <ul className="list-unstyled text-start">
-                    <li className="py-2 px-3 border-b border-gray-200 flex-wrap whitespace-nowrap">
+                    <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">
                         Portfolio Management Service PMS
                       </a>
                     </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
+                    <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">Startup Investment</a>
                     </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
+                    <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">SME IPO Investment</a>
                     </li>
-                    <li className="py-2 px-3">
+                    <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">Real Estate Investment</a>
                     </li>
                   </ul>
@@ -220,18 +340,18 @@ function Headers() {
                 >
                   <ul className="wbkit list-unstyled text-start overflow-y-scroll h-[250px]">
                     <li className="py-2 px-3 border-b border-gray-200"></li>
-                    <li className="py-2 px-3 border-b border-gray-200">
+                    <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">IPO Advisory</a>
                     </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
+                    <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">M&A</a>
                     </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
+                    <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">
                         Private Equity/Pre-IPO placement
                       </a>
                     </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
+                    <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">Valuation</a>
                     </li>
                     <li className="py-2 px-3 border-b border-gray-200">
@@ -259,138 +379,33 @@ function Headers() {
                 >
                   <ul className="wbkit list-unstyled text-start overflow-y-scroll h-[250px]">
                     <li className="py-2 px-3 border-b border-gray-200">
-                      <a href="#investor-form">IPO Advisory</a>
+                      {/* <a href="#investor-fx`orm">IPO Advisory</a> */}
                     </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
+                    <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">
                         Virtual CFO & Corporate Finance
                       </a>
                     </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
+                    <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">Bookkeeping</a>
                     </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
+                    <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">Audit Support & Assurance</a>
                     </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
+                    <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">Financial Reporting</a>
                     </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
+                    <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">Budgeting and Forecasting</a>
                     </li>
-                    <li className="py-2 px-3">
+                    <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">Corporate Tax & Compliances</a>
                     </li>
                   </ul>
                 </div>
               </div>
-            )}
-            {/* {showWealthSubpoints && (
-              <div
-                className="position-absolute top-0 end-0 me-5 subpoints-wealth"
-                onMouseLeave={handleMouseLeaveWealth}
-              >
-                <div
-                  className="p-3  rounded-lg ml-[-150px] border-bottom-only"
-                  style={{ width: "400px" }}
-                >
-                  <ul className="list-unstyled">
-                    <li className="py-2 px-3 border-b border-gray-200 flex-wrap whitespace-nowrap">
-                      <a href="#investor-form">
-                        Portfolio Management Service PMS
-                      </a>
-                    </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
-                      <a href="#investor-form">Startup Investment</a>
-                    </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
-                      <a href="#investor-form">SME IPO Investment</a>
-                    </li>
-                    <li className="py-2 px-3">
-                      <a href="#investor-form">Real Estate Investment</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            )}
-            
-            {showBankingSubpoints && (
-              <div
-                className="position-absolute top-0 end-0 me-5 subpoints-banking"
-                onMouseLeave={handleMouseLeaveBanking}
-              >
-                <div
-                  className="p-3 border-b border-gray-300 rounded-lg ml-[-150px]"
-                  style={{
-                    width: "400px",
-                    borderLeft: "none",
-                    borderRight: "none",
-                    borderTop: "none",
-                  }}
-                >
-                  <ul className="list-unstyled">
-                    <li className="py-2 px-3 border-b border-gray-200 flex-wrap whitespace-nowrap">
-                      IPO Advisory
-                    </li>
-                    <li className="py-2 px-3 border-b border-gray-200">M&A</li>
-                    <li className="py-2 px-3 border-b border-gray-200">
-                      Private Equity/Pre-IPO placement
-                    </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
-                      Valuation
-                    </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
-                      ECM Advisory
-                    </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
-                      Debt Advisory
-                    </li>
-                    <li className="py-2 px-3">SPAC</li>
-                  </ul>
-                </div>
-              </div>
-            )}
-           
-            {showAccountingSubpoints && (
-              <div
-                className="position-absolute top-0 end-0 me-5 subpoints-accounting"
-                onMouseLeave={handleMouseLeaveAccounting}
-              >
-                <div
-                  className="p-3 rounded-lg ml-[-150px]"
-                  style={{
-                    width: "400px",
-                    borderBottom: "1px solid #E5E7EB", // Light gray border for the bottom
-                    borderLeft: "none", // Remove left border
-                    borderRight: "none", // Remove right border
-                    borderTop: "none", // Remove top border
-                  }}
-                >
-                  <ul className="list-unstyled">
-                    <li className="py-2 px-3 border-b border-gray-200 flex-wrap whitespace-nowrap">
-                      IPO Advisory
-                    </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
-                      Virtual CFO & Corporate Finance
-                    </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
-                      Bookkeeping
-                    </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
-                      Audit Support & Assurance
-                    </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
-                      Financial Reporting
-                    </li>
-                    <li className="py-2 px-3 border-b border-gray-200">
-                      Budgeting and Forecasting
-                    </li>
-                    <li className="py-2 px-3">Corporate Tax & Compliances</li>
-                  </ul>
-                </div>
-              </div>
-            )}  */}
-          </div>
+            )}     
+          </Card>
         </div>
       )}
     </>

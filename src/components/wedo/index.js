@@ -38,20 +38,20 @@ const WhatweDo = () => {
 
   return (
     <>
-      <section className="what-we-do w-full h-auto py-4">
+      <section className="what-we-do w-full h-auto py-4" id='what-we-do'>
         <div className="what-we-do-container flex flex-col justify-center items-center">
           <div className="top-container flex flex-col justify-center items-center text-center py-4">
-            <h2 className=" flex items-center leading-[30px] md:leading-[60px] font-lato text-[28px] md:text-[48px] md:text-[#0F0F0F] font-[700px] text-[48px] text-center py-4">
+            <h2 className=" flex items-center leading-[30px] md:leading-[60px] font-lato text-[27px] md:text-[48px] md:text-[#0F0F0F] font-bold text-[48px] text-center py-3 ">
               What We do 
             </h2>
           
-          <p className="text-[#5F5F5F] leading-6 text-[14px] md:text-[18px] font-normal text-[#5F5F5F] text-center">
+          <p className="text-[#556987] leading-6 text-[14px] md:text-[18px] font-normal text-[#5F5F5F] text-center pb-[20px]">
               Discover a range of services designed to meet your unique
               financial goals.
             </p>
           
           </div>
-          <div className="bottom-container flex flex-col md:flex-row w-full md:w-[90vw] h-auto  flex justify-evenly  rounded-tr-[100px] py-10">
+          <div className="bottom-container flex flex-col md:flex-row w-full md:w-[90vw] h-auto  flex justify-evenly  rounded-tr-[100px] rounded-bl-[80px] py-16 mb-8">
             <Cardform onButtonClick={handleButtonClick} />
             <Cardtwo showWhatsAppIcon={showWhatsAppIcon} selectedTitle={selectedTitle} 
             currentImage={currentImage} />

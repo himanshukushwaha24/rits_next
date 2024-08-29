@@ -9,19 +9,25 @@ function Cardthree({ paragraphContent, title }) {
   const router = useRouter();
 
   const handleLearnMoreClick = () => {
-    router.push('#investor-form');
+    // router.push('#investor-form');
+    console.log("title==", title);
+    if(title==="Sustainable Investment"){
+      window.location.href= "https://climifi.com";
+    }else{
+      router.push('#investor-form');
+    }
   };
 
 
 
   return (
-    <div className="flex justify-start items-center w-full bg-white">
-      <Card className="card_3 no-border  h-full p-4">
-        <Card.Body>
-          <Card.Title className="font-bold text-[24px] text-[#0F0F0F] mb-3">
+    <div className="flex justify-start items-center w-full  ">
+      <div className="card_3 no-border  h-full  border-none ">
+        <div className="">
+          <div className="font-bold text-[24px] text-[#0F0F0F] mb-3">
             {title}
-          </Card.Title>
-          <Card.Text className="text-start text-[16px] font-regular text-[#5F5F5F]">
+          </div>
+          <div className="text-start text-[16px] font-regular text-[#5F5F5F]">
             {Array.isArray(paragraphContent) ? (
               <ul className="list-inside list-disc space-y-2">
                 {paragraphContent.map((item, index) => (
@@ -31,7 +37,7 @@ function Cardthree({ paragraphContent, title }) {
             ) : (
               <span className="leading-6">{paragraphContent}</span>
             )}
-          </Card.Text>
+          </div>
           <div className="mt-4">
             <Card.Link
               className="learn-more-link flex items-center text-blue-500 cursor-pointer"
@@ -47,8 +53,23 @@ function Cardthree({ paragraphContent, title }) {
               />
             </Card.Link>
           </div>
-        </Card.Body>
-      </Card>
+          <div className="flex justify-end  ml-[340px] mt-[250px] hidden md:block  "
+  style={{
+    backgroundImage: `url(${"/assets/whatwedo/wedologo1.png"})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    height: "200px",
+    width: "125px",
+    borderRadius: "10px 10px 0 0",
+    marginTop:'60px',
+    marginRight:'0px',
+    opacity: "0.3",
+    
+  }}
+>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

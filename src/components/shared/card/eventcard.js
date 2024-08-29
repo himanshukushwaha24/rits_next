@@ -1,45 +1,102 @@
 import React from "react";
+import { useState, useEffect, useRef } from "react";
+import { Form, Button, Alert } from "react-bootstrap";
 import Slider from "react-slick";
 import Card from "react-bootstrap/Card";
 import Image from "next/image";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+
 import EventSlider from "../eventslider";
-import { CardBody } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPhone,
-  faEnvelope,
-  faMapMarkerAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 function SimpleSlider() {
+  const [email, setEmail] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+  let sliderRef = useRef(null);
+  const next = () => {
+    sliderRef.slickNext();
+  };
+
+  const previous = () => {
+    sliderRef.slickPrev();
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Create payload with only email
+    const payload = { email: email, website: "ritscapital.com" };
+
+    try {
+      const rawResponse = await fetch(
+        "https://api.khubero.com/website/contact",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      const content = await rawResponse.json();
+      console.log("Response:", content);
+      setSuccessMessage(
+        "Thank you! You have successfully subscribed to upcoming events."
+      );
+      setEmail("");
+    } catch (error) {
+      console.error("Error:", error);
+      setSuccessMessage(
+        "Sorry, there was an error with your submission. Please try again."
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (successMessage) {
+      const timer = setTimeout(() => {
+        setSuccessMessage(null);
+      }, 2000); // 2000ms = 2 seconds
+
+      return () => clearTimeout(timer); // Cleanup the timer if the component unmounts or successMessage changes
+    }
+  }, [successMessage]);
 
   return (
-    <div className="slider-container max-w-full px-4 hidden lg:block">
-      <Slider {...settings}>
+    <div className="slider-container max-w-full px-4 hidden lg:block px-6">
+      <Slider
+        ref={(slider) => {
+          sliderRef = slider;
+        }}
+        {...settings}
+      >
         <div className="">
           <Card className="w-full  border-none">
-            <Card.Body className="flex flex-col md:flex-row justify-evenly space-y-4 md:space-y-0">
-              <div className="card_left w-full md:w-[45%]">
-                <Card className="w-full h-auto bg-white shadow-sm border-none">
-                  <Card.Body className="flex flex-col space-y-4">
+            <Card.Body className="flex flex-col md:flex-row justify-evenly space-y-4 md:space-y-4 border-none">
+              <div className="card_left w-full md:w-[90%]  ">
+                <Card className="w-full h-auto bg-white shadow-sm border-none  ">
+                  <Card.Body className="flex flex-col gap-3  ">
                     {/* First Row: Split into 30% and 70% */}
-                    <div className="flex w-full justify-between">
-                      <div className="w-[30%] bg-[#009837] p-4 border-l-[3px] border-l-solid border-l-[#1D9B82] bg-opacity-10">
-                        <h4 className="text-[14px] md:text-[20px] font-[700px] text-[#009837]">
-                          Sep 26, <br /> 2024
+                    <div className="flex w-full md:[30%] justify-between border md:h-[150px] items-center ">
+                      <div className="w-[30%] bg-[#009837] h-full border-l-[3px]  border-l-solid border-l-[#1D9B82] bg-opacity-10 flex items-center justify-center">
+                        <h4 className="text-[20px] md:text-[20px] font-bold text-[#009837] ">
+                          26th September{" "}
+                          <div className=" flex text-center justify-center items-center text-[28px]">
+                            2024
+                          </div>
                         </h4>
                       </div>
-                      <div className="w-[70%] bg-[#FFFFFF] p-2 ">
+                      <div className="w-[70%] bg-[#FFFFFF] pl-[35px] flex flex-col gap-4 ">
                         <Link
                           href="https://www.ritscapital.com/startup-pitch-day/index.html"
                           target="_blank"
@@ -68,13 +125,16 @@ function SimpleSlider() {
                     </div>
 
                     {/* Second Row */}
-                    <div className="flex w-full justify-between">
-                      <div className="w-[30%] bg-[#009837] p-4 border-l-[3px] border-l-solid border-l-[#1D9B82] bg-opacity-10">
-                        <h4 className="text-[14px] md:text-[20px] font-[700px] text-[#009837]">
-                          27th April <br /> 2024
+                    <div className="flex w-full justify-between border md:h-[150px] items-center">
+                      <div className="w-[30%] bg-[#009837] h-full border-l-[3px]  border-l-solid border-l-[#1D9B82] bg-opacity-10 flex items-center justify-center">
+                        <h4 className="text-[20px] md:text-[20px] font-bold text-[#009837] ">
+                          27th April{" "}
+                          <div className=" flex text-center justify-center items-center text-[28px]">
+                            2024
+                          </div>
                         </h4>
                       </div>
-                      <div className="w-[70%] bg-[#FFFFFF] p-2">
+                      <div className="w-[70%] bg-[#FFFFFF]  pl-[35px] flex flex-col gap-4">
                         <p className="text-[22px]  text-[#0F0F0F] font-semibold">
                           Climifi Investors’ Day 2.0
                         </p>
@@ -99,13 +159,16 @@ function SimpleSlider() {
                     </div>
 
                     {/* Third Row */}
-                    <div className="flex w-full ">
-                      <div className="w-[30%] bg-[#009837] p-4 border-l-[3px] border-l-solid border-l-[#1D9B82] bg-opacity-10">
-                        <h4 className="text-[14px] md:text-[20px] font-[700px] text-[#009837]">
-                          27th March <br /> 2024
+                    <div className="flex w-full border md:h-[150px] items-center">
+                      <div className="w-[30%] bg-[#009837] h-full border-l-[3px]  border-l-solid border-l-[#1D9B82] bg-opacity-10 flex items-center justify-center">
+                        <h4 className="text-[20px] md:text-[20px] font-bold text-[#009837]">
+                          27th March{" "}
+                          <div className=" flex text-center justify-center items-center text-[28px]">
+                            2024
+                          </div>
                         </h4>
                       </div>
-                      <div className="w-[70%] bg-[#FFFFFF] p-2">
+                      <div className="w-[70%] bg-[#FFFFFF] pl-[35px] flex flex-col gap-4">
                         <p className="text-[22px]  text-[#0F0F0F] font-semibold">
                           Rits Capital Investor Symposium
                         </p>
@@ -128,72 +191,45 @@ function SimpleSlider() {
                         </div>
                       </div>
                     </div>
-                    {/* Fourth Row */}
-                    {/* <div className="flex w-full ">
-                      <div className="w-[40%] bg-[#009837] p-4 border-l-[3px] border-l-solid border-l-[#1D9B82] bg-opacity-10">
-                        <h4 className="text-[20px] font-[700px] text-[#009837]">
-                          Jan 29, <br/> 2024
-                        </h4>
-                      </div>
-                      <div className="w-[70%] bg-[#FFFFFF] p-2">
-                        <p className="text-sm text-gray-600">
-                        Rits Capital CXO Conclave
-                        </p>
-                        <div className="flex items-center space-x-2 mt-2">
-                          <span className="text-sm text-gray-500">In-person</span>
-                          <span className="text-sm text-gray-500">|</span>
-                          <span className="text-sm text-gray-500"><FontAwesomeIcon icon={faMapMarkerAlt} />  India</span>
-                        </div>
-                      </div>
-                    </div> */}
-                    {/* Fifth Row */}
-                    {/* <div className="flex w-full ">
-                      <div className="w-[40%] bg-[#009837] p-4 border-l-[3px] border-l-solid border-l-[#1D9B82] bg-opacity-10">
-                        <h4 className="text-[20px] font-[700px] text-[#009837]">
-                          Jan 12, <br/> 2024
-                        </h4>
-                      </div>
-                      <div className="w-[70%] bg-[#FFFFFF] p-2">
-                        <p className="text-sm text-gray-600">
-                        Climifi Investors Day
-                        </p>
-                        <div className="flex items-center space-x-2 mt-2">
-                          <span className="text-sm text-gray-500">In-person</span>
-                          <span className="text-sm text-gray-500">|</span>
-                          <span className="text-sm text-gray-500"><FontAwesomeIcon icon={faMapMarkerAlt} />  India</span>
-                        </div>
-                      </div>
-                    </div> */}
                   </Card.Body>
                 </Card>
               </div>
 
-              <div className="card_right w-full md:w-[45%] flex justify-center items-center">
-                <Card className="w-full h-auto bg-white  border-none flex justify-center items-center">
-                  {/* <Image
-                    src="/assets/events/events1.png"
-                    alt="Event Image"
-                    width={500}
-                    height={300}
-                    layout="responsive"
-                    className="rounded-t-md"
-                  /> */}
-                
-                    <EventSlider />
-                 
-
-                  <Form>
+              <div className="card_right w-full h-auto md:mt-[8px] md:h-[490px] md:w-[50%] flex justify-center items-center bg-[#F0F0F0] rounded-tr-[80px] px-4">
+                <Card className="w-full h-auto border-none flex justify-center items-center  border-none bg-transparent ">
+                  <EventSlider />
+                  <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formGroupEmail">
                       <Form.Label></Form.Label>
-                      <Form.Control className="w-full md:w-[400px]"
+                      <Form.Control
+                        className="w-full md:w-[400px]"
                         type="email"
                         placeholder="Enter your email address"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
                       />
                     </Form.Group>
-                    <Button className="w-full md:w-[400px]" variant="success">
-                      Subscribe for upcoming events
+                    <Button
+                      className="w-full md:w-[400px]"
+                      variant="success"
+                      type="submit"
+                    >
+                      Subscribe for Upcoming Events
                     </Button>
                   </Form>
+                  {successMessage && (
+                    <Alert
+                      variant={
+                        successMessage.startsWith("Thank")
+                          ? "success"
+                          : "danger"
+                      }
+                      className="mt-3"
+                    >
+                      {successMessage}
+                    </Alert>
+                  )}
                 </Card>
                 {/* <EventSlider/> */}
               </div>
@@ -204,19 +240,22 @@ function SimpleSlider() {
         {/* Additional slides can go here */}
         <div className="flex flex-col">
           <div className="">
-            <Card className="w-full  border-none shadow-xl">
-              <Card.Body className="flex flex-col md:flex-row justify-evenly space-y-4 md:space-y-0">
-                <div className="card_left w-full md:w-[45%]">
-                  <Card className="w-full h-auto bg-white shadow-sm border-none">
+            <Card className="w-full  border-none ">
+              <Card.Body className="flex flex-col md:flex-row justify-evenly space-y-4 md:space-y-4">
+                <div className="card_left w-full md:w-[65%]">
+                  <Card className="w-full h-auto bg-white shadow-sm border-none ">
                     <Card.Body className="flex flex-col space-y-4">
                       {/* First Row: Split into 30% and 70% */}
-                      <div className="flex w-full ">
-                        <div className="w-[30%] bg-[#009837] p-4 border-l-[3px] border-l-solid border-l-[#1D9B82] bg-opacity-10">
-                          <h4 className="text-[14px] md:text-[20px] font-[700px] text-[#009837]">
-                            29th January <br /> 2024
+                      <div className="flex w-full border md:h-[150px] items-center ">
+                        <div className="w-[30%] bg-[#009837] h-full border-l-[3px]  border-l-solid border-l-[#1D9B82] bg-opacity-10 flex items-center justify-center">
+                          <h4 className="text-[20px] md:text-[20px] font-bold text-[#009837]">
+                            29th January{" "}
+                            <div className=" flex text-center justify-center items-center text-[28px]">
+                              2024
+                            </div>
                           </h4>
                         </div>
-                        <div className="w-[70%] bg-[#FFFFFF] p-2">
+                        <div className="w-[70%] bg-[#FFFFFF] pl-[35px] flex flex-col gap-4">
                           <p className="text-[22px]  text-[#0F0F0F] font-semibold">
                             Rits Capital CXO Conclave
                           </p>
@@ -241,13 +280,16 @@ function SimpleSlider() {
                       </div>
 
                       {/* Second Row */}
-                      <div className="flex w-full justify-between">
-                        <div className="w-[30%] bg-[#009837] p-4 border-l-[3px] border-l-solid border-l-[#1D9B82] bg-opacity-10">
-                          <h4 className="text-[14px]md:text-[20px] font-[700px] text-[#009837]">
-                            12th January <br /> 2024
+                      <div className="flex w-full border md:h-[150px] items-center ">
+                        <div className="w-[30%] bg-[#009837] h-full border-l-[3px]  border-l-solid border-l-[#1D9B82] bg-opacity-10 flex items-center justify-center">
+                          <h4 className="text-[20px] md:text-[20px] font-bold text-[#009837]">
+                            12th January{" "}
+                            <div className=" flex text-center justify-center items-center text-[28px]">
+                              2024
+                            </div>
                           </h4>
                         </div>
-                        <div className="w-[70%] bg-[#FFFFFF] p-2">
+                        <div className="w-[70%] bg-[#FFFFFF] pl-[35px] flex flex-col gap-4">
                           <p className="text-[22px]  text-[#0F0F0F] font-semibold">
                             Climifi Investors’ Day
                           </p>
@@ -270,58 +312,48 @@ function SimpleSlider() {
                           </div>
                         </div>
                       </div>
-
-                      {/* Third Row */}
-                      {/* <div className="flex w-full ">
-                      <div className="w-[40%] bg-[#009837] p-4 border-l-[3px] border-l-solid border-l-[#1D9B82] bg-opacity-10">
-                        <h4 className="text-[20px] font-[700px] text-[#009837]">
-                          Mar 27, <br/> 2024
-                        </h4>
-                      </div>
-                      <div className="w-[70%] bg-[#FFFFFF] p-2">
-                        <p className="text-sm text-gray-600">
-                        Rits Capital Investor Symposium
-                        </p>
-                        <div className="flex items-center space-x-2 mt-2">
-                          <span className="text-sm text-gray-500">In-person</span>
-                          <span className="text-sm text-gray-500">|</span>
-                          <span className="text-sm text-gray-500"><FontAwesomeIcon icon={faMapMarkerAlt} />  USA</span>
-                        </div>
-                      </div>
-                    </div> */}
-                      {/* Fourth Row */}
-
-                      {/* Fifth Row */}
                     </Card.Body>
                   </Card>
                 </div>
 
-                <div className="card_right w-full md:w-[45%] ">
-                  <Card className="w-full bg-white shadow-md border-none ">
-                    {/* <Image
-                    src="/assets/events/events1.png"
-                    alt="Event Image"
-                    width={500}
-                    height={300}
-                    layout="responsive"
-                    className="rounded-t-md"
-                  /> */}
+                <div className="card_right w-full h-auto md:mt-[8px] md:h-[490px] md:w-[50%] flex justify-center items-center bg-[#F0F0F0] rounded-tr-[80px] px-4">
+                  <Card className="w-full h-auto border-none flex justify-center items-center  border-none bg-transparent">
                     <div className="flex justify-center items-center">
                       <EventSlider />
                     </div>
 
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                       <Form.Group className="mb-3" controlId="formGroupEmail">
                         <Form.Label></Form.Label>
-                        <Form.Control className="w-full md:w-[400px]"
+                        <Form.Control
+                          className="w-full md:w-[400px]"
                           type="email"
                           placeholder="Enter your email address"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
                         />
                       </Form.Group>
-                      <Button className="w-full md:w-[400px]" variant="success">
-                        Subscribe for upcoming events
+                      <Button
+                        className="w-full md:w-[400px]"
+                        variant="success"
+                        type="submit"
+                      >
+                        Subscribe for Upcoming Events
                       </Button>
                     </Form>
+                    {successMessage && (
+                      <Alert
+                        variant={
+                          successMessage.startsWith("Thank")
+                            ? "success"
+                            : "danger"
+                        }
+                        className="mt-3"
+                      >
+                        {successMessage}
+                      </Alert>
+                    )}
                   </Card>
                   {/* <EventSlider/> */}
                 </div>
@@ -330,6 +362,15 @@ function SimpleSlider() {
           </div>
         </div>
       </Slider>
+      <div className="flex items-center justify-center gap-12 mt-4 ">
+        <button className="button" onClick={previous}>
+          <img src="/assets/leftarrow.png" alt="Left Arrow" />
+        </button>
+        <span className="w-[30px] h-[5px] bg-green-800"></span>
+        <button className="button" onClick={previous}>
+          <img src="/assets/rightarrow.png" alt="Right Arrow" />
+        </button>
+      </div>
     </div>
   );
 }

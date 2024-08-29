@@ -91,7 +91,7 @@ import Image from "next/image";
 
 function EventSlider() {
   const settings = {
-    dots: true,
+    dots: false,
     fade: true,
     infinite: true,
     speed: 500,
@@ -105,46 +105,96 @@ function EventSlider() {
   };
 
   return (
-    <div className="slider-container" style={{width:"400px"}}>
+    <div className="slider-container" style={{width:"500px",height:"auto"}}>
       
       <Slider {...settings}>
-        <div className="image-wrapper ">
+         <div className="image-wrapper p-1  ">
           <Image
-             src="/events/events55.jpg"
+             src="/assets/hemevents/Events1.jpg"
             alt="Event 1"
             layout="responsive"  // Use 'responsive' layout instead of 'fill'
-            width={30}  // Specify width and height for 'responsive' layout
-            height={30}
-            className="image-style eventborder_radius"
+            width={80}  // Specify width and height for 'responsive' layout
+            height={20}
+            className="image-style eventborder_radius "
           />
-        </div>  
+        </div>   
         <div className="image-wrapper">
           <Image
-             src="/events/events44.jpg"
+             src="/assets/hemevents/Events2.jpg"
             alt="Event 2"
             layout="responsive"
             width={80}
-            height={50}
+            height={20}
             className="image-style eventborder_radius"
           />
-        </div>
-        <div className="image-wrapper">
+        </div> 
+         <div className="image-wrapper">
           <Image
-             src="/events/events8.jpg"
+             src="/assets/hemevents/Events3.jpg"
             alt="Event 3"
             layout="responsive"
             width={80}
-            height={50}
+            height={20}
+            className="image-style eventborder_radius"
+          />
+        </div> 
+       <div className="image-wrapper">
+          <Image
+             src="/assets/hemevents/Events4.jpg"
+            alt="Event 4"
+            layout="responsive"
+            width={80}
+            height={20}
+            className="image-style eventborder_radius"
+          />
+        </div> 
+        <div className="image-wrapper">
+          <Image
+             src="/assets/hemevents/Events5.jpg"
+            alt="Event1"
+            layout="responsive"
+            width={80}
+            height={20}
+            className="image-style eventborder_radius"
+          />
+        </div> 
+        <div className="image-wrapper">
+          <Image
+             src="/assets/hemevents/Events6.jpg"
+            alt="Event1"
+            layout="responsive"
+            width={80}
+            height={20}
+            className="image-style eventborder_radius"
+          />
+        </div> 
+        <div className="image-wrapper">
+          <Image
+             src="/assets/hemevents/Events7.jpg"
+            alt="Event1"
+            layout="responsive"
+            width={80}
+            height={20}
             className="image-style eventborder_radius"
           />
         </div>
         <div className="image-wrapper">
           <Image
-             src="/events/events2.jpg"
-            alt="Event 4"
+             src="/assets/hemevents/Events8.jpg"
+            alt="Event1"
             layout="responsive"
             width={80}
-            height={50}
+            height={20}
+            className="image-style eventborder_radius"
+          />
+        </div>
+        <div className="image-wrapper">
+          <Image
+             src="/assets/hemevents/Events9.jpg"
+            alt="Event1"
+            layout="responsive"
+            width={80}
+            height={20}
             className="image-style eventborder_radius"
           />
         </div>
@@ -187,6 +237,20 @@ function EventSlider() {
           .slider-container {
             height: auto; /* Adjust height for smaller screens */
           }
+                 .slider-container {
+          position: relative;
+          width: 100%;
+          max-width: 100%;
+          height: auto; /* Allow height to adjust based on image aspect ratio */
+        }
+
+        .image-wrapper {
+          position: relative;
+          width: 100%;
+          height: auto;
+          overflow: hidden;
+        }
+
         }
       `}</style>
     </div>

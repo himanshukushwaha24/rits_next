@@ -23,7 +23,7 @@ function InvestorForm() {
       email: email,
       sponsor: "contact-" + contact,
       message:  " contact-" + contact+" message"+message,
-      website: "ritscapital",
+      website: "ritscapital.com",
     };
 
     try {
@@ -84,8 +84,9 @@ function InvestorForm() {
 
               <Form.Group controlId="contact">
                 <Form.Label className="px-2 py-2">Mobile</Form.Label>
+                <div className="d-flex"></div>
                 <Form.Control
-                  type="text"
+                  type="text"   
                   placeholder="+91 000 000 0000"
                   className="light-placeholder"
                   value={contact}
