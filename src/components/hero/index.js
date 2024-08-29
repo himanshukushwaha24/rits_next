@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 
-
 const HeroSection = () => {
   const imagePaths = [
     "/assets/hero/bannerimage1.jpg",
@@ -16,23 +15,23 @@ const HeroSection = () => {
     {
       title: "WEALTH MANAGEMENT",
       subtitle: "Playing Defense in a Risky Market",
-    }, // Image 1
+    },
     {
       title: "THOUGHTS ON THE MARKET",
       subtitle: "Economics Roundtable: Global Elections",
-    }, // Image 2
+    },
     {
       title: "INVESTMENT MANAGEMENT",
       subtitle: "Understanding Private Credit",
-    }, // Image 3
+    },
     {
       title: "WEALTH MANAGEMENT",
       subtitle: "Playing Defense in a Risky Market",
-    }, // Image 4
+    },
     {
       title: "INVESTMENT MANAGEMENT",
       subtitle: "Understanding Private Credit",
-    }, // Image 5
+    },
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -53,13 +52,14 @@ const HeroSection = () => {
   const scrollToForm = () => {
     const element = document.getElementById("investor-form");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
     <div
       className=" w-full h-screen hero-bg"
+      id="hero-sec"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
@@ -69,27 +69,29 @@ const HeroSection = () => {
       {/* Text Overlay for First Three Images */}
       {currentImageIndex < 3 && (
         <div className="absolute inset-0 flex flex-col items-start justify-center bg-black  bg-opacity-50 pl-20 ">
-          <h1 className="text-white text-[38px] md:text-[53px] font-[700]  leading-[72px] letter-spacing-[0.01em] text-left font-lato mb-0 md:mb-8 mt-[-130px]">
-  Empowering Your Financial Future <br />
-  with Innovative Investment <br />
-  Solutions
-</h1>
+          <h1
+            className="text-white absolute z-10 text-[38px] md:text-[48px] font-[700]
+            leading-[72px] letter-spacing-[0.01em] text-left font-lato mb-0 md:mb-8 mt-[-250px] md:mt-[-150px] mr-[5px]md:mr-[0px]"
+          >
+            Empowering Your Financial Future <br />
+            with Innovative Investment <br />
+            Solutions
+          </h1>
           {/* Adjusted margin-top to reduce space */}
           <div>
-          <button
-  onClick={scrollToForm}
-  className="px-6 py-2 absolute z-10 border border-2 sm:text-[16px] font-bold text-white rounded-sm hover:bg-green-600 transition-all duration-300 mt-8 flex items-center"
->
-  Contact Us
-  <Image
-    src="/icon/Vector.png"
-    alt="Arrow Icon"
-    width={8}
-    height={8}
-    className="ml-2"
-  />
-</button>
-
+            <button
+              onClick={scrollToForm}
+              className="px-6 py-2 absolute z-10 border border-2 sm:text-[16px] font-bold text-white rounded-sm hover:bg-green-600 transition-all duration-300 mt-[105px] md:mt-[100px] flex items-center"
+            >
+              Contact Us
+              <Image
+                src="/icon/Vector.png"
+                alt="Arrow Icon"
+                width={8}
+                height={8}
+                className="ml-2"
+              />
+            </button>
           </div>
         </div>
       )}
@@ -124,26 +126,26 @@ const HeroSection = () => {
       </div>
 
       {/* Mobile View: Display one image with navigation arrows */}
-      <div className="flex lg:hidden justify-center items-center h-full relative ">
+      <div className="flex lg:hidden justify-evenly items-center h-full relative ">
         <button
-          className="absolute left-4 text-white bg-[#009837] hover:bg-green-600 p-3 rounded-full font-bold bottom-[220px]"
+          className="absolute left-4 text-white bg-[#009837] hover:bg-green-600 p-3 rounded-full font-bold bottom-[200px]"
           onClick={handlePrev}
         >
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
 
         <div className="w-full h-full flex items-end justify-center relative ">
-          <div className="absolute bottom-4 flex flex-col items-start text-white">
-            <h1 className="text-[14px] font-[400] leading-[32px] text-left font-lato mb-1">
-              {texts[currentImageIndex].title}
+          <div className="absolute bottom-4 flex flex-col items-start text-white ">
+            <h1 className="text-[14px] font-[400] leading-[32px] text-left font-lato mr-[20px] mb-[13px]">
+              {/* {texts[currentImageIndex].title} */}
             </h1>
             <h2 className="text-[16px] font-[700] leading-[19.2px] text-left font-lato">
-              {texts[currentImageIndex].subtitle}
+              {/* {texts[currentImageIndex].subtitle} */}
             </h2>
           </div>
         </div>
         <button
-          className="absolute right-4 text-white bg-[#009837] hover:bg-green-600 p-3 rounded-full bottom-[220px]"
+          className="absolute right-4 text-white bg-[#009837] hover:bg-green-600 p-3 rounded-full bottom-[200px]"
           onClick={handleNext}
         >
           <FontAwesomeIcon icon={faArrowRight} />

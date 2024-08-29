@@ -29,7 +29,7 @@
 //         <CardBody>
 //           <div className="min-w-[200px] flex flex-col justify-between bg-[#FFFFFF] py-2 shadow-md">
 //             <span className="font-[500px] text-[20px] leading-6 text-[#575757] mb-2">
-//               New York
+//                York
 //             </span>
 //             <span className="text-[#009837] font-[700px] text-[24px] leading-7">
 //               USA
@@ -57,10 +57,13 @@
 
 
 import React from "react";
+import { useState } from "react";
 import { CardBody } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 
 const Placecart = ({ onCitySelect }) => {
+  const [selectedCity, setSelectedCity] = useState(null);
+
   const cities = [
     {
       name: "New York",
@@ -97,26 +100,32 @@ const Placecart = ({ onCitySelect }) => {
     },
   ];
 
+
   return (
-    <Card className="w-full h-auto md:w-full md:h-auto overflow-x-auto md:overflow-x-hide scroll-responsive">
-      <div className="flex md:flex-col gap-1 md:px-0">
+    <Card className="w-full h-auto md:w-full md:h-auto overflow-x-auto md:overflow-x-hidden scroll-responsive bg-[#ffffff] ">
+      <div className="flex md:flex-col gap-1 md:px-1 bg-[#F0F0F0]">
         {cities.map((city) => (
           <CardBody
             key={city.name}
-            onClick={() =>
+            onClick={() => {
               onCitySelect({
                 lat: city.lat,
                 lng: city.lng,
                 maplink: city.maplink,
-              })
-            }
+              });
+              setSelectedCity(city.name);
+            }}
+            
+            
             className="hover:cursor-pointer"
           >
-            <div className="min-w-[500px] flex flex-col justify-between bg-[#FFFFFF] py-2 shadow-md">
-              <span className="font-[500px] text-[20px] leading-6 text-[#575757] mb-2">
+            <div className={`min-w-[350px] flex flex-col justify-between py-2 ${
+  selectedCity === city.name ? 'bg-[#FFFFFF]' : 'bg-[#EAEAEA]'
+}`}>
+              <span className="font-[500px] text-[18px] leading-6 text-[#575757] mb-2 px-3">
                 {city.name}
               </span>
-              <span className="text-[#009837] font-[700px] text-[24px] leading-7">
+              <span className="text-[#009837] font-[700px] text-[18px] leading-7 px-3">
                 {city.country}
               </span>
             </div>

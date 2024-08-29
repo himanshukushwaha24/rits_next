@@ -154,4 +154,13 @@ slick-dots {
   padding: 0;
   margin: 0;
   list-style: none;
-  text-align: center;}
+  text-align: center;
+}
+
+  .eventborder_radius{
+    border-radius: 0px 50px 0px 0px;
+  }
+  /* .whtwedo_img2 {
+    box-shadow: 15px 20px 20px rgba(0, 0, 0, 0.3);
+  } */
+  

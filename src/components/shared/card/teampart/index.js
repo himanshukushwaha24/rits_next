@@ -27,9 +27,25 @@ function TeamPart() {
     />
   </button>
 </div>
+<div className="mt-0 flex justify-center md:hidden">
+  <button
+    className="text-white border border-white rounded-lg px-[50px] py-[12px] flex items-center mb-[100px]"
+    onClick={() => window.location.href = 'mailto:rit@ritscapital.com?subject=Resume%20Submission'}
+  >
+    Send your Resume
+    <Image
+      src="/icon/Vector.png"
+      alt="Arrow Icon"
+      width={8}
+      height={8}
+      className="ml-2"
+    />
+  </button>
+</div>
 
        </div>
       </Card.Body>
+      
     </Card>
   );
 }
