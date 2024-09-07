@@ -2221,10 +2221,12 @@
                   <input name="linkdin" id="reg_linkdin" placeholder="Enter Your Linkedin Profile" />
                   <label>Registration Type <span>*</span></label>
                   <select id="i_am">
-                    <option value="Sponsor">Sponsor ($1200)</option>
-                    <option value="Investor">Investor</option>
-                    <option value="Founder">Founder/CXO ($75)</option>
-                    <option value="Delegate">Delegate ($75)</option>
+                    <option value="VCs & Angels">VCs & Angels ($25)</option>
+                    <option value="Founder/CXO">Founders & CXOs ($55)</option>
+                    <option value="Pitch Your Startup">Pitch Your Startup ($110)</option>
+                    <option value="Gold Sponsor">Gold Sponsor Partner ($4500)</option>
+                    <option value="Silver Sponsor">Silver Sponsor Partner ($2500)</option>
+                    <option value="Bronze Sponsor">Bronze Sponsor Partner ($1200)</option>
                   </select>
                   <p class="error text-left" id="reg_error"></p>
                     <div class="text-center">
@@ -2472,25 +2474,34 @@ const rawResponse = await fetch(
 
 const content = await rawResponse.json();
 // console.log(" am", i_am)
-	  if(i_am==="Sponsor"){
-		    window.location.href ="https://www.paypal.com/ncp/payment/T23M76J4G38EN";
+	  if(i_am==="VCs & Angels"){
+		    window.location.href ="https://www.paypal.com/ncp/payment/KND9LPNYU95SS";
         return
 	  }
-    if(i_am==="Investor"){
-		   alert("Thank you !! We will connect you soon")
+    if(i_am==="Founder/CXO"){
+      window.location.href ="https://www.paypal.com/ncp/payment/85TREMLY9LF3C";
+        return
+	  }
+
+    if(i_am==="Pitch Your Startup"){
+		    window.location.href =" https://www.paypal.com/ncp/payment/ZZETLYKZV9ZDU";
         return
 
 	  }
 
-    if(i_am==="Founder"){
-		    window.location.href =" https://www.paypal.com/ncp/payment/85TREMLY9LF3C";
+
+    if(i_am==="Gold Sponsor"){
+		    window.location.href =" https://www.paypal.com/ncp/payment/93XMRSQJC955U";
         return
 
 	  }
+    if(i_am==="Silver Sponsor"){
+		    window.location.href =" https://www.paypal.com/ncp/payment/JAY2L3N282RNA";
+        return
 
-
-    if(i_am==="Delegate"){
-		    window.location.href =" https://www.paypal.com/ncp/payment/W9MKLJY3J3N8S";
+	  }
+    if(i_am==="Bronze Sponsor"){
+		    window.location.href =" https://www.paypal.com/ncp/payment/T23M76J4G38EN";
         return
 
 	  }

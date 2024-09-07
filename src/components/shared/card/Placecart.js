@@ -115,13 +115,12 @@ const Placecart = ({ onCitySelect }) => {
               });
               setSelectedCity(city.name);
             }}
-            
-            
+
+
             className="hover:cursor-pointer"
           >
-            <div className={`min-w-[350px] flex flex-col justify-between py-2 ${
-  selectedCity === city.name ? 'bg-[#FFFFFF]' : 'bg-[#EAEAEA]'
-}`}>
+            <div className={`min-w-[200px] lg:min-w-[340px] flex flex-col justify-between py-2 ${selectedCity === city.name ? 'bg-[#FFFFFF]' : 'bg-[#EAEAEA]'
+              }`}>
               <span className="font-[500px] text-[18px] leading-6 text-[#575757] mb-2 px-3">
                 {city.name}
               </span>

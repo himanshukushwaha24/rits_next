@@ -163,4 +163,7 @@ slick-dots {
   /* .whtwedo_img2 {
     box-shadow: 15px 20px 20px rgba(0, 0, 0, 0.3);
   } */
+  .active-tab {
+    color: green !important;
+  }
   

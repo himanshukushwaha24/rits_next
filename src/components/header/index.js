@@ -2,6 +2,7 @@ import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import { Card, CardBody, Container, Nav, Navbar } from "react-bootstrap";
 import Image from "next/image";
+import MobileMenu from "../mobiheader";
 
 function Headers() {
   const [isOverlayVisible, setOverlayVisible] = useState(false);
@@ -12,6 +13,10 @@ function Headers() {
 
   const handleToggleOverlay = () => {
     setOverlayVisible(true);
+  };
+
+  const handleToggleOverlayOut = () => {
+    setOverlayVisible(false);
   };
 
   const handleMenuItemClick = (menu) => {
@@ -98,11 +103,11 @@ function Headers() {
       </Head>
       <Navbar
         expand="lg"
-        className="bg-body-tertiary headerWrap bg-transparent shadow-lg"
+        className="bg-body-tertiar headerWrap bg-transparent  w-full h-18 bg-white"
       >
-        <Container className="">
+        <Container className="bg-white">
           <Navbar.Brand href="#home">
-            <div className="flex items-center">
+            <div className="items-center flex">
               <Image
                 src="/assets/ritslogo1.png"
                 alt="RITS Logo"
@@ -113,8 +118,8 @@ function Headers() {
             </div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto nav-spaced ">
+          <Navbar.Collapse id="basic-navbar-nav ">
+            <Nav className="me-auto nav-spaced  hidden md:flex ">
               {/* <Nav.Link href="#">About</Nav.Link> */}
               <Nav.Link
                 href="#"
@@ -128,8 +133,8 @@ function Headers() {
               <Nav.Link href="#career">Career</Nav.Link>
             </Nav>
 
-            <div className="mr-[15px]">
-              <Nav className="me-auto">
+            <div className="mr-[15px] ">
+              <Nav className="me-auto hidden md:block">
                 <Nav.Link
                   href="#investor-form"
                   className="bg-[#070707] text-white rounded font-normal py-2 px-4 flex items-center"
@@ -145,169 +150,206 @@ function Headers() {
                 </Nav.Link>
               </Nav>
             </div>
+            <MobileMenu />
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
       {isOverlayVisible && (
-        <div className="overlay hidden md:flex bg-[#F9F9F9]">
-          <Card className="container-fluid flex justify-center  border-none items-center flex-col text-start mr-[150px]">
-            <CardBody className="">
-            <ul className="list-unstyled text-start ">
-              <li onMouseEnter={() => setActiveSubmenu(null)}>
-                <a
-                  className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
-                  href="#investor-form"
-                >
-                  Pre IPO & Unlisted Equities
-                </a>
-              </li>
-              <li
-                onMouseEnter={() => handleMenuItemClick("wealth")}
-                // onMouseLeave={() => handleMenuItemClick("")}
-              >
-                <a
-                  className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold "
-                  href="#"
-                  onClick={() => handleMenuItemClick("wealth")}
-                  style={{ display: "flex", alignItems: "center" }} // Ensures proper alignment
-                >
-                 <span> Wealth Management Services</span>
-                  <span className="ml-auto">
-                    <Image
-                      src="/assets/events/arrowicon.png"
-                      alt="arrow icon"
-                      width={16}
-                      height={16}
-                      className={`transition-opacity duration-200 ${
-                        activeSubmenu === "wealth" ? "opacity-100" : "opacity-0"
-                      }`}
-                    />
-                  </span>
-                </a>
-              </li>
-
-              <li onMouseEnter={() => setActiveSubmenu(null)}>
-                <a
-                  className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
-                  href="#investor-form"
-                >
-                  Smart Model Portfolio
-                </a>
-              </li>
-
-              <li
-                onMouseEnter={() => handleMenuItemClick("banking")}
-                // onMouseLeave={() => handleMenuItemClick("")} // optional if you want to handle mouse leave differently
-              >
-                <a
-                  className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
-                  href="#"
-                  onClick={() => handleMenuItemClick("banking")}
-                  style={{ display: "flex", alignItems: "center" }} // Ensures proper alignment
-                >
-                <span>Investment Banking</span>
-                  <span className="ml-auto">
-                    {activeSubmenu === "banking" && (
+        <div
+          className="overlay bg-white hidden md:flex"
+          onMouseLeave={handleToggleOverlayOut}
+        >
+          <Card className="container-fluid flex justify-start  border-none items-c flex-col text-start bg-[#F9F9F9">
+            <CardBody className="w-[50%] bg-[#F9F9F9]">
+              <ul className="list-unstyled  flex flex-col items-end text-right ">
+                <li onMouseEnter={() => setActiveSubmenu(null)}>
+                  <a
+                    className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
+                    href="#investor-form"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    Pre IPO & Unlisted Equities
+                    <span className="ml-2">
                       <Image
                         src="/assets/events/arrowicon.png"
                         alt="arrow icon"
                         width={16}
                         height={16}
-                        className="transition-opacity duration-200 opacity-100" // Smooth transition effect
+                        className={`transition-opacity duration-200  ${
+                          activeSubmenu === "Pre IPO"
+                            ? "opacity-100"
+                            : "opacity-0 "
+                        }`}
                       />
-                    )}
-                  </span>
-                </a>
-              </li>
-
-              <li
-                onMouseEnter={() => handleMenuItemClick("accounting")}
-                // onMouseLeave={handleMouseLeaveAccounting}
-                className="relative transition-all duration-300 ease-in-out h-auto py-2"
-              >
-                <a
-                  className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
-                  href="#"
-                  onClick={() => handleMenuItemClick("accounting")}
+                    </span>
+                  </a>
+                </li>
+                <li
+                  onMouseEnter={() => handleMenuItemClick("wealth")}
+                  // onMouseLeave={() => handleMenuItemClick("")}
                 >
-                  <span className="flex justify-between items-center flex-grow text-[18px] ">
-                    Accounting and Tax Services Support
-                    {activeSubmenu === "accounting" && (
+                  <a
+                    className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold "
+                    href="#"
+                    onClick={() => handleMenuItemClick("wealth")}
+                    style={{ display: "flex", alignItems: "center" }} // Ensures proper alignment
+                  >
+                    <span> Wealth Management Services</span>
+                    <span className="ml-2">
                       <Image
                         src="/assets/events/arrowicon.png"
                         alt="arrow icon"
                         width={16}
                         height={16}
-                        className="ml-[10px] transition-opacity duration-300 ease-in-out opacity-100"
+                        className={`transition-opacity duration-200  ${
+                          activeSubmenu === "wealth"
+                            ? "opacity-100"
+                            : "opacity-0 "
+                        }`}
                       />
-                    )}
-                    {activeSubmenu !== "accounting" && (
+                    </span>
+                  </a>
+                </li>
+
+                <li onMouseEnter={() => setActiveSubmenu(null)}>
+                  <a
+                    className="py-2 px-3 border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
+                    href="#investor-form"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    Smart Model Portfolio
+                    <span className="ml-2">
                       <Image
                         src="/assets/events/arrowicon.png"
                         alt="arrow icon"
                         width={16}
                         height={16}
-                        className="ml-[10px] transition-opacity duration-300 ease-in-out opacity-0"
+                        className={`transition-opacity duration-200  ${
+                          activeSubmenu === "smart"
+                            ? "opacity-100"
+                            : "opacity-0 "
+                        }`}
                       />
-                    )}
-                  </span>
-                </a>
-              </li>
+                    </span>
+                  </a>
+                </li>
 
-              <li
-                onMouseEnter={() => handleMenuItemClick("startup")}
-                // onMouseLeave={handleMouseLeaveStartup}
-                className="relative transition-all duration-300 ease-in-out"
-              >
-                <a
-                  className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
-                  href="#"
-                  onClick={() => handleMenuItemClick("startup")}
+                <li
+                  onMouseEnter={() => handleMenuItemClick("banking")}
+                  // onMouseLeave={() => handleMenuItemClick("")} // optional if you want to handle mouse leave differently
                 >
-                  <span className="flex items-center text-[18px] ">
+                  <a
+                    className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
+                    href="#"
+                    onClick={() => handleMenuItemClick("banking")}
+                    style={{ display: "flex", alignItems: "center" }} // Ensures proper alignment
+                  >
+                    <span>Investment Banking</span>
+                    <span className="ml-2">
+                      <Image
+                        src="/assets/events/arrowicon.png"
+                        alt="arrow icon"
+                        width={16}
+                        height={16}
+                        className={`transition-opacity duration-200  ${
+                          activeSubmenu === "banking"
+                            ? "opacity-100"
+                            : "opacity-0 "
+                        }`}
+                      />
+                    </span>
+                  </a>
+                </li>
+
+                <li
+                  onMouseEnter={() => handleMenuItemClick("accounting")}
+                  // onMouseLeave={handleMouseLeaveAccounting}
+                  className="relative transition-all duration-300 ease-in-out h-auto py-2"
+                >
+                  <a
+                    className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold "
+                    href="#"
+                    onClick={() => handleMenuItemClick("accounting")}
+                    style={{ display: "flex", alignItems: "center" }} // Ensures proper alignment
+                  >
+                    <span>Accounting and Tax Services Support</span>
+                    <span className="ml-2">
+                      <Image
+                        src="/assets/events/arrowicon.png"
+                        alt="arrow icon"
+                        width={16}
+                        height={16}
+                        className={`transition-opacity duration-200  ${
+                          activeSubmenu === "accounting"
+                            ? "opacity-100"
+                            : "opacity-0 "
+                        }`}
+                      />
+                    </span>
+                  </a>
+                </li>
+
+                <li
+                  onMouseEnter={() => handleMenuItemClick("startup")}
+                  // onMouseLeave={handleMouseLeaveStartup}
+                  className="relative transition-all duration-300 ease-in-out"
+                >
+                  <a
+                    className="py-2 px-3 border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
+                    href="#investor-form"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
                     Startup Fundraise Support
-                    {activeSubmenu === "startup" && (
+                    <span className="ml-2">
                       <Image
                         src="/assets/events/arrowicon.png"
                         alt="arrow icon"
                         width={16}
                         height={16}
-                        className="ml-[10px] transition-opacity duration-300 ease-in-out opacity-100"
+                        className={`transition-opacity duration-200  ${
+                          activeSubmenu === "smart"
+                            ? "opacity-100"
+                            : "opacity-0 "
+                        }`}
                       />
-                    )}
-                    {activeSubmenu !== "startup" && (
-                      <Image
-                        src="/assets/events/arrowicon.png"
-                        alt="arrow icon"
-                        width={16}
-                        height={16}
-                        className="ml-[10px] transition-opacity duration-300 ease-in-out opacity-0"
-                      />
-                    )}
-                  </span>
-                </a>
-              </li>
+                    </span>
+                  </a>
+                </li>
 
-              <li onMouseEnter={() => setActiveSubmenu(null)}>
-                <a
-                  className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
-                  href="https://climifi.com/"
-                >
-                  Sustainable Investing
-                </a>
-              </li>
-            </ul>
+                <li onMouseEnter={() => setActiveSubmenu(null)}>
+                  <a
+                    className="py-2 px-3  border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold"
+                    href="https://climifi.com/"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    Sustainable Investing
+                    <span className="ml-2">
+                      <Image
+                        src="/assets/events/arrowicon.png"
+                        alt="arrow icon"
+                        width={16}
+                        height={16}
+                        className={`transition-opacity duration-200  ${
+                          activeSubmenu === "smart"
+                            ? "opacity-100"
+                            : "opacity-0 "
+                        }`}
+                      />
+                    </span>
+                  </a>
+                </li>
+              </ul>
             </CardBody>
             {/* Render Submenu based on the active menu */}
             {activeSubmenu === "wealth" && (
               <div
-                className="position-absolute top-0 end-0 me-5 subpoints-wealth"
+                className="position-absolute top-0 end-0  subpoints-wealth w-[50%]"
                 onMouseLeave={handleMouseLeaveWealth}
               >
                 <div
-                  className="p-3 rounded-lg ml-[-150px] shadow-sm bg-white"
-                  style={{ width: "400px" }}
+                  className=" rounded-lg  bg-white w-full flex justify-start items-start pl-6"
+                  style={{ width: "100%" }}
                 >
                   <ul className="list-unstyled text-start">
                     <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
@@ -331,15 +373,14 @@ function Headers() {
 
             {activeSubmenu === "banking" && (
               <div
-                className="position-absolute top-0 end-0 me-5 subpoints-banking"
+                className="position-absolute top-0 end-0  w-[50%] subpoints-banking"
                 onMouseLeave={handleMouseLeaveBanking}
               >
                 <div
-                  className="p-3 rounded-lg ml-[-150px]"
-                  style={{ width: "400px" }}
+                  className=" rounded-lg  bg-white w-full flex justify-start items-start pl-6 "
+                  style={{ width: "100%" }}
                 >
-                  <ul className="wbkit list-unstyled text-start overflow-y-scroll h-[250px]">
-                    <li className="py-2 px-3 border-b border-gray-200"></li>
+                  <ul className="wbkit list-unstyled text-start overflow-y-scroll h-[250px] justify-start items-start pl-4">
                     <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
                       <a href="#investor-form">IPO Advisory</a>
                     </li>
@@ -370,15 +411,18 @@ function Headers() {
 
             {activeSubmenu === "accounting" && (
               <div
-                className="position-absolute top-0 end-0 me-5 subpoints-accounting"
+                className="position-absolute top-0 end-0  w-[50%] subpoints-accounting"
                 onMouseLeave={handleMouseLeaveAccounting}
               >
                 <div
-                  className="p-3 rounded-lg ml-[-150px]"
-                  style={{ width: "400px" }}
+                  className="rounded-lg  bg-white w-full flex justify-start items-start pl-6"
+                  style={{ width: "100%" }}
                 >
                   <ul className="wbkit list-unstyled text-start overflow-y-scroll h-[250px]">
-                    <li className="py-2 px-3 border-b border-gray-200">
+                    <li
+                      className="py-2 px-3 border-b
+                     border-gray-200"
+                    >
                       {/* <a href="#investor-fx`orm">IPO Advisory</a> */}
                     </li>
                     <li className="py-2 px-3 border-b border-gray-400  flex-wrap whitespace-nowrap text-[16px] font-semibold">
@@ -404,7 +448,7 @@ function Headers() {
                   </ul>
                 </div>
               </div>
-            )}     
+            )}
           </Card>
         </div>
       )}

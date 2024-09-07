@@ -3,6 +3,7 @@ import { Button, Card, CardBody, Form, Alert } from 'react-bootstrap'
 import EventSlider from '../eventslider'
 import { useState, useEffect } from "react";
 
+
 const Mobieventsright = () => {
 
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ const Mobieventsright = () => {
     event.preventDefault();
 
     // Create payload with only email
-    const payload = { email: email };
+    const payload = { email: email, website: "ritscapital.com" };
 
     try {
       const rawResponse = await fetch(
@@ -55,6 +56,7 @@ const Mobieventsright = () => {
   return (
     <>
      <div className="eventmobi w-full block md:hidden">
+    
                   <Card className="w-full bg-white shadow-md border-none">
                     {/* <Image
                     src="/assets/events/events1.png"
@@ -68,10 +70,10 @@ const Mobieventsright = () => {
                       <EventSlider />
                     </CardBody>
 
-                    <Form onSubmit={handleSubmit}>
-                      <Form.Group className="mb-3" controlId="formGroupEmail">
+                    <Form className='py-2 bg-[#F0F0F0]' onSubmit={handleSubmit} >
+                      <Form.Group className="mb-4 pl-3 pr-3" controlId="formGroupEmail">
                         <Form.Label></Form.Label>
-                        <Form.Control className="w-full"
+                        <Form.Control className="w-full py-2"
                           type="email"
                           placeholder="Enter your email address"
                           value={email}
@@ -79,9 +81,11 @@ const Mobieventsright = () => {
                           required
                         />
                       </Form.Group>
-                      <Button className="w-full " variant="success" type="submit">
+                      <div className='pl-3 pr-3 pb-4'>
+                      <Button className="w-full py-2  bg-[#009837]"  type="submit">
                         Subscribe for upcoming events
                       </Button>
+                      </div>
                     </Form>
                     {successMessage && (
                     <Alert

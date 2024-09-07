@@ -3,7 +3,7 @@
   top: 90px; 
   left: 0;
   width: 100%;
-  height: calc(100vh - 290px); /* Subtract header height from the total viewport height */
+  height: auto; /* Subtract header height from the total viewport height */
   background-color: rgba(255, 255, 255, 0.95);
   z-index: 999; /* Ensure it is below the header */
   display: flex;
