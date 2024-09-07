@@ -65,7 +65,7 @@ const Map = ({ center }) => {
   return (
     
     
-        <iframe className="w-full md:w-[800px]"
+        <iframe className="w-full md:w-[700px]" style={{}}
           title="googlemap"
           src={`${center.maplink}&basemap=satellite&disableDefaultUI=true`}
           width="900"

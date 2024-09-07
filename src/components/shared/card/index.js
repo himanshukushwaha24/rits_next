@@ -16,35 +16,35 @@ function Cardform({ onButtonClick }) {
       "Smart Model Portfolio",
       "This is the content for Smart Model Portfolio",
       "/assets/whatwedo/whatwedo2.png"
-    ); // Pass the new image URL
+    );
   };
   const handlePreIpoListedClick = () => {
     onButtonClick(
-      "Smart Model Portfolio",
+      "Pre-IPO & Unlisted Equities",
       "This is the content for preIpo ",
       "/assets/whatwedo/whatwedo1.png"
-    ); // Pass the new image URL
+    );
   };
   const handleWealthMangement = () => {
     onButtonClick(
       "Wealth Mangement",
       "This is the content for Wealth Mangement ",
       "/assets/whatwedo/whatwedo3.png"
-    ); // Pass the new image URL
+    );
   };
   const handleInvestmentBanking = () => {
     onButtonClick(
       "Investment Banking",
       "This is the content for Investment Banking ",
       "/assets/whatwedo/whatwedo4.png"
-    ); // Pass the new image URL
+    );
   };
   const handleAccountingTax = () => {
     onButtonClick(
-      "Accounting Tax",
+      "Accounting and Tax Services Support",
       "This is the content for Accounting Tax ",
       "/assets/whatwedo/whatwedo1.png"
-    ); // Pass the new image URL
+    );
   };
 
   useEffect(() => {
@@ -154,14 +154,6 @@ function Cardform({ onButtonClick }) {
 
   const accountTaxServices = [
     {
-      // title: "IPO Advisory",
-      // details: [
-      //   "Expert guidance through the entire IPO process.",
-      //   "Comprehensive strategies for successful public offerings.",
-      //   "Tailored support to meet regulatory and market requirements.",
-      // ],
-    },
-    {
       title: "Virtual CFO & Corporate Finance",
       details: [
         "Strategic Virtual CFO services for small business growth.",
@@ -248,16 +240,6 @@ function Cardform({ onButtonClick }) {
         "Investment banking"
       );
     }
-    // Always update the content when the section is opened
-    onButtonClick(
-      [
-        "Unlock financial success with Rits Capital's Investment Banking expertise.",
-        "From IPOs to M&A, our seasoned team ensures strategic growth.",
-        "Access funding with tailored Private Equity solutions and secure your financial future with our Equity Capital Markets and Debt Advisory services.",
-        "We provide the following comprehensive services under Investment Banking.",
-      ],
-      "Investment banking"
-    );
   };
 
   const handleAccountTax = () => {
@@ -269,17 +251,10 @@ function Cardform({ onButtonClick }) {
           "At Rits Outsourcing, our proficient team delivers efficient finance and accounting services, encompassing IPO Advisory, Virtual CFO, Corporate Finance, Bookkeeping, Payroll, Auditing, Budgeting, Financial Reporting, and Corporate Tax & Compliance.",
           "We customize solutions to support informed decision-making and business growth, managing financial complexities expertly.",
         ],
-        "Accounting and tax services support"
+        "Accounting and Tax Services Support"
       );
     }
-    onButtonClick(
-      [
-        "Streamline Your Finances with Proficient Accounting Services",
-        "At Rits Outsourcing, our proficient team delivers efficient finance and accounting services, encompassing IPO Advisory, Virtual CFO, Corporate Finance, Bookkeeping, Payroll, Auditing, Budgeting, Financial Reporting, and Corporate Tax & Compliance.",
-        "We customize solutions to support informed decision-making and business growth, managing financial complexities expertly.",
-      ],
-      "Accounting and tax services support"
-    );
+    
   };
 
   const handleSectionClick = (sectionTitle, toggleFunction) => {
@@ -310,20 +285,23 @@ function Cardform({ onButtonClick }) {
         className="rounded-tl-lg border-none "
         style={{ borderTopLeftRadius: "3.5rem", border: "none" }}
       >
-        <div className="  ">
-          <div className="border-b border-b-[1px] border-b-solid border-b-[#D5D5D5] p-3 w-full md:w-[380px]">
+        <div>
+          <div
+            id="main"
+            className="border-b-[1px] border-b-solid border-b-[#D5D5D5] p-3 w-full md:w-[380px]"
+          >
             <button
+              id="pre-ipo"
               onClick={() => {
                 handleButtonClick(
                   [
                     "We offer investors unparalleled opportunities to participate in the success of tomorrow's market leaders.",
                     "Robust growth potential with a track record of delivering average returns exceeding 80%.",
                     "Curated investments unlock industry-shaping wealth potential for discerning investors.",
-
-                    // Add more paragraphs as needed
                   ],
                   "Pre-IPO & Unlisted Equities"
                 );
+                setOpenSection(null);
               }}
               className={`flex justify-between items-center  w-full font-lato font-semibold text-[18px]  ${
                 activeButton === "Pre-IPO & Unlisted Equities"
@@ -337,20 +315,12 @@ function Cardform({ onButtonClick }) {
               >
                 Pre-IPO & Unlisted Equities
               </span>
-              {/* {isMounted && activeButton === "Pre-IPO & Unlisted Equities" && ( */}
-              <Image
-                src="/assets/events/arrowicon.png"
-                alt="arrow icon"
-                width={16}
-                height={16}
-                className=""
-              />
-              {/* )} */}
             </button>
           </div>
 
-          <div className="border-b border-b-[1px] border-b-solid border-b-[#D5D5D5] p-3 w-full md:w-[380px]">
+          <div className="border-b-[1px] border-b-solid border-b-[#D5D5D5] p-3 w-full md:w-[380px]">
             <button
+              id="wealth"
               onClick={() =>
                 handleSectionClick(
                   "Wealth Management Services",
@@ -369,8 +339,6 @@ function Cardform({ onButtonClick }) {
               >
                 Wealth Management Services
               </span>
-              {/* {isMounted && openSection === "Wealth Management Services" && ( */}
-
               <Image
                 src="/assets/events/arrowicon.png"
                 alt="arrow icon"
@@ -387,7 +355,6 @@ function Cardform({ onButtonClick }) {
                   })`,
                 }}
               />
-              {/* )} */}
             </button>
             {openSection === "Wealth Management Services" && (
               <ul className="list-unstyled font-[400] text-[15px] leading-6 text-[#0F0F0F]">
@@ -400,15 +367,6 @@ function Cardform({ onButtonClick }) {
                       }`}
                     >
                       {subpoint.title}
-                      {/* {isMounted && activeButton === subpoint.title && ( */}
-                      {/* <Image
-                src="/assets/events/arrowicon.png"
-                alt="arrow icon"
-                width={16}
-                height={16}
-                className="ml-auto"
-              /> */}
-                      {/* )} */}
                     </button>
                   </li>
                 ))}
@@ -416,11 +374,9 @@ function Cardform({ onButtonClick }) {
             )}
           </div>
 
-
-
-
-          <div className="border-b border-b-[1px] border-b-solid border-b-[#D5D5D5] p-3 w-full md:w-[380px]">
+          <div className="border-b-[1px] border-b-solid border-b-[#D5D5D5] p-3 w-full md:w-[380px]">
             <button
+              id="smart"
               onClick={() => {
                 handleButtonClick(
                   [
@@ -433,6 +389,13 @@ function Cardform({ onButtonClick }) {
                   ],
                   "Smart Model Portfolio"
                 );
+
+                setOpenSection(null);
+                setArrowRotations({
+                  transform: `rotate(${
+                    arrowRotations["Wealth Management Services"] || "0deg"
+                  })`,
+                });
               }}
               className={`flex justify-between items-center w-full font-lato font-semibold text-[18px] ${
                 activeButton === "Smart Model Portfolio" ? "active-button" : ""
@@ -444,25 +407,16 @@ function Cardform({ onButtonClick }) {
               >
                 Smart Model Portfolio
               </span>
-              {/* {isMounted && activeButton === "Smart Model Portfolio" && ( */}
-              <Image
-                src="/assets/events/arrowicon.png"
-                alt="arrow icon"
-                width={16}
-                height={16}
-                className="ml-auto"
-              />
-              {/* )} */}
             </button>
           </div>
 
-
-          <div className="border-b border-b-[1px] border-b-solid border-b-[#D5D5D5] p-3 w-full md:w-[380px]">
+          <div className="border-b-[1px] border-b-solid border-b-[#D5D5D5] p-3 w-full md:w-[380px]">
             <button
+              id="investment"
               onClick={() =>
                 handleSectionClick("Investment banking", handleInvestmentPoint)
               }
-              className={`flex justify-between items-center  w-full font-lato font-semibold text-[18px] ${
+              className={`flex justify-between items-center w-full font-lato font-semibold text-[18px] ${
                 openSection === "Investment banking" ? "active-button" : ""
               }`}
             >
@@ -472,7 +426,7 @@ function Cardform({ onButtonClick }) {
               >
                 Investment Banking
               </span>
-              {/* {isMounted && openSection === "Investment banking" && ( */}
+
               <Image
                 src="/assets/events/arrowicon.png"
                 alt="arrow icon"
@@ -489,7 +443,6 @@ function Cardform({ onButtonClick }) {
                   })`,
                 }}
               />
-              {/* )} */}
             </button>
             {openSection === "Investment banking" && (
               <ul className="list-unstyled font-[400] text-[15px] leading-6 text-[#0F0F0F]">
@@ -502,15 +455,6 @@ function Cardform({ onButtonClick }) {
                       }`}
                     >
                       {subpoint.title}
-                      {/* {isMounted && activeButton === subpoint.title && ( */}
-                      {/* <Image
-                src="/assets/events/arrowicon.png"
-                alt="arrow icon"
-                width={16}
-                height={16}
-                className="ml-auto"
-              /> */}
-                      {/* )} */}
                     </button>
                   </li>
                 ))}
@@ -518,14 +462,9 @@ function Cardform({ onButtonClick }) {
             )}
           </div>
 
-
-
-          
-
-         
-
-          <div className="border-b border-b-[1px] border-b-solid border-b-[#D5D5D5] p-3 w-full md:w-[380px]">
+          <div className="border-b-[1px] border-b-solid border-b-[#D5D5D5] p-3 w-full md:w-[380px]">
             <button
+              id="accounting"
               onClick={() =>
                 handleSectionClick(
                   "Accounting and tax services support",
@@ -545,7 +484,7 @@ function Cardform({ onButtonClick }) {
                 {" "}
                 Accounting & Tax Services Support
               </span>
-              {/* {isMounted && openSection === "Accounting and tax services support" && ( */}
+
               <Image
                 src="/assets/events/arrowicon.png"
                 alt="arrow icon"
@@ -564,7 +503,6 @@ function Cardform({ onButtonClick }) {
                   })`,
                 }}
               />
-              {/* )} */}
             </button>
             {openSection === "Accounting and tax services support" && (
               <ul className="list-unstyled font-[400] text-[15px] leading-6 text-[#0F0F0F]">
@@ -577,15 +515,6 @@ function Cardform({ onButtonClick }) {
                       }`}
                     >
                       {service.title}
-                      {/* {isMounted && activeButton === service.title && ( */}
-                      {/* <Image
-                src="/assets/events/arrowicon.png"
-                alt="arrow icon"
-                width={16}
-                height={16}
-                className="ml-auto"
-              /> */}
-                      {/* )} */}
                     </button>
                   </li>
                 ))}
@@ -593,9 +522,10 @@ function Cardform({ onButtonClick }) {
             )}
           </div>
 
-          <div className="border-b border-b-[1px] border-b-solid border-b-[#D5D5D5] p-3 w-full md:w-[380px]">
+          <div className=" border-b-[1px] border-b-solid border-b-[#D5D5D5] p-3 w-full md:w-[380px]">
             <button
-              onClick={() =>
+              id="startup"
+              onClick={() => {
                 handleButtonClick(
                   [
                     "At Rits Capital, we empower visionary startups to shape the future.",
@@ -603,32 +533,33 @@ function Cardform({ onButtonClick }) {
                     "B2B SaaS, AI, Deep-tech, ESG, and other transformative industries.",
                     "With a strong focus on the US market and deep connections to forward-thinking investors.",
                     "we provide the strategic support your startup needs to thrive.",
-                    "Partner with us to turn your innovative ideas into reality and drive the next wave of industry change."
+                    "Partner with us to turn your innovative ideas into reality and drive the next wave of industry change.",
                   ],
                   "Startup Fundraise Support"
-                )
-              }
-              className={`flex justify-between items-center  w-full font-lato font-semibold text-[18px]  ${
-                activeButton === "Sustainable Investing" ? "active-button" : ""
+                );
+                setOpenSection(null);
+                setArrowRotations({
+                  transform: `rotate(${
+                    arrowRotations["Accounting and tax services support"] ||
+                    "0deg"
+                  })`,
+                });
+              }}
+              className={`flex justify-start items-center  w-full font-lato font-semibold text-[18px]  ${
+                activeButton === "Startup Fundraise Support"
+                  ? "active-button"
+                  : ""
               }`}
             >
               <span className="whitespace-nowrap block text-[18px]"></span>{" "}
               Startup Fundraise Support
-              {/* {isMounted && activeButton === "Sustainable Investing" && ( */}
-              <Image
-                src="/assets/events/arrowicon.png"
-                alt="arrow icon"
-                width={16}
-                height={16}
-                className="ml-auto"
-              />
-              {/* )} */}
             </button>
           </div>
 
-          <div className="border-b border-b-[1px] border-b-solid border-b-[#D5D5D5] p-3 w-full md:w-[380px]">
+          <div className=" border-b-[1px] border-b-solid border-b-[#D5D5D5] p-3 w-full md:w-[380px]">
             <button
-              onClick={() =>
+              id="sustainable"
+              onClick={() => {
                 handleButtonClick(
                   [
                     "Our institutional-caliber analytics to assess the sustainability characteristics of investments, enabling clients to understand ESG risks and opportunities, and to make informed decisions that balance financial returns with positive societal impact.",
@@ -637,26 +568,17 @@ function Cardform({ onButtonClick }) {
                     "Aligning investments with long-term environmental and financial goals.",
                   ],
                   "Sustainable Investment"
-                )
-              }
-              className={`flex justify-between items-center  w-full font-lato font-semibold text-[18px]  ${
-                activeButton === "Sustainable Investing" ? "active-button" : ""
+                );
+                setOpenSection(null);
+              }}
+              className={`flex justify-start items-center  w-full font-lato font-semibold text-[18px]  ${
+                activeButton === "Sustainable Investment" ? "active-button" : ""
               }`}
             >
               <span className="whitespace-nowrap block text-[18px]"></span>{" "}
               Sustainable Investing
-              {/* {isMounted && activeButton === "Sustainable Investing" && ( */}
-              <Image
-                src="/assets/events/arrowicon.png"
-                alt="arrow icon"
-                width={16}
-                height={16}
-                className="ml-auto"
-              />
-              {/* )} */}
             </button>
           </div>
-              
         </div>
       </div>
     </div>

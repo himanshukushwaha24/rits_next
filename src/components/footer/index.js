@@ -18,10 +18,107 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  const scrollToWhatWeDo = () => {
-    const section = document.getElementById("what-we-do");
+  const scrollToWealth = () => {
+    const section = document.getElementById("main");
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        const listItem = document.getElementById("wealth");
+        if (listItem) {
+          listItem.click();
+        }
+        if (!listItem) {
+          listItem.click(null);
+        }
+      }, 500);
+    }
+  };
+  const scrollToPreipo = () => {
+    const section = document.getElementById("main");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        const listItem = document.getElementById("pre-ipo");
+        if (listItem) {
+          listItem.click();
+        }
+      }, 500);
+    }
+  };
+  const scrollToSmart = () => {
+    const section = document.getElementById("main");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        const listItem = document.getElementById("smart");
+        if (listItem) {
+          listItem.click();
+        }
+        if (!listItem) {
+          listItem.click(null);
+        }
+      }, 500);
+    }
+  };
+  const scrollToInvestment = () => {
+    const section = document.getElementById("main");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        const listItem = document.getElementById("investment");
+        if (listItem) {
+          listItem.click();
+        }
+        if (!listItem) {
+          listItem.click(null);
+        }
+      }, 500);
+    }
+  };
+  const scrollToAccounting = () => {
+    const section = document.getElementById("main");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        const listItem = document.getElementById("accounting");
+        if (listItem) {
+          listItem.click();
+        }
+        if (!listItem) {
+          listItem.click(null);
+        }
+      }, 500);
+    }
+  };
+  const scrollToStartup = () => {
+    const section = document.getElementById("main");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        const listItem = document.getElementById("startup");
+        if (listItem) {
+          listItem.click();
+        }
+        if (!listItem) {
+          listItem.click(null);
+        }
+      }, 500);
+    }
+  };
+
+  const scrollToSustainable = () => {
+    const section = document.getElementById("main");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        const listItem = document.getElementById("sustainable");
+        if (listItem) {
+          listItem.click();
+        }
+        if (!listItem) {
+          listItem.click(null);
+        }
+      }, 500);
     }
   };
 
@@ -86,19 +183,14 @@ const Footer = () => {
           className="ml-[90px] mb-12 mt-6"
         /> */}
         <div className="w-full container mx-auto px-4 grid grid-cols-1 lg:grid-cols-5 gap-0 md:gap-2">
-          <div className="lg:col-span-1 ">
-            <h3 className="font-bold text-black-800  text-left ml-[10px] md:ml-[20px] md:ml-[150px] text-[15px]">
+          <div className="lg:col-span-1 md:mt-6">
+            <h3 className="font-bold text-black-800  text-left ml-[10px]  md:ml-[20px] text-[15px] ">
               USA
             </h3>
-            {/* <p className="text-black-800">
-              Rits Capital is an independent investment firm with offices in
-              United States, India, United Kingdom, Singapore, Hong Kong, and
-              UAE.
-            </p> */}
+
             <div className="container mx-auto px-2 mt-4 flex flex-col md:flex-row justify-between items-center text-black-800 ">
               <div className="flex flex-col md:flex-row justify-between w-full md:w-1/2">
                 <ul className="space-y-2 text-black-600 ">
-                 
                   <li>
                     <FontAwesomeIcon icon={faPhone} /> +1 925 915 6637
                   </li>
@@ -109,37 +201,27 @@ const Footer = () => {
                     <FontAwesomeIcon icon={faEnvelope} /> rit@ritscapital.com
                   </li>
                   <li>
-                    <FontAwesomeIcon icon={faMapMarkerAlt} /> 225 Broadway, New York, 10038
-                   
+                    <FontAwesomeIcon icon={faMapMarkerAlt} /> 108 Bishop ranch,
+                    San Ramon, CA 94583
                   </li>
                   <li>
-                    <FontAwesomeIcon icon={faMapMarkerAlt} /> 108 Bishop ranch, San Ramon, CA 94583
-                   
+                    <FontAwesomeIcon icon={faMapMarkerAlt} /> 225 Broadway, New
+                    York, 10038
                   </li>
                 </ul>
-                {/* <div className="w-full md:w-1/2 p-4 border-2 bg-teal-700 ">
-              <p>1.</p>
-            </div> */}
-                {/* <div className="w-full md:w-1/2 p-4 border-2 bg-red-900">
-              <p>2</p>
-            </div> */}
               </div>
-            
-
             </div>
           </div>
           <div className="  justify-between text-left w-full md:w-1/2  md:mt-0 ">
-            <h3 className="font-bold text-black-800 mb-4 text-left  md:ml-[20px] md:ml-[150px] text-[15px] text-[15px]">
+            <h3 className="font-bold text-black-800 mb-4 text-left  md:ml-[20px] text-[15px] mt-4 md:mt-0">
               India
             </h3>
             <ul className="space-y-2 text-black-600 ">
               <li>
                 <FontAwesomeIcon icon={faPhone} /> +918130806145
-           
               </li>
               <li>
                 <FontAwesomeIcon icon={faPhone} /> +919911003037
-                
               </li>
               <li>
                 <FontAwesomeIcon icon={faWhatsapp} /> +919711996998
@@ -148,32 +230,32 @@ const Footer = () => {
                 <FontAwesomeIcon icon={faEnvelope} /> rit@ritscapital.com
               </li>
               <li>
-                <FontAwesomeIcon icon={faMapMarkerAlt} /> A-96, 1st Floor
-                Sector 63 Noida, UP - 201301
+                <FontAwesomeIcon icon={faMapMarkerAlt} /> A-96, 1st Floor Sector
+                63 Noida, UP - 201301
               </li>
             </ul>
-            {/* <div className="w-full md:w-1/2 p-4 border-2 bg-teal-700 ">
-              <p>1.</p>
-            </div> */}
-            {/* <div className="w-full md:w-1/2 p-4 border-2 bg-red-900">
-              <p>2</p>
-            </div> */}
           </div>
           <div>
-            <h3 className="font-semibold text-black-800 mb-4 text-[15px]">Services</h3>
+            <h3 className="font-semibold text-black-800 mb-4 text-[15px] mt-4 md:mt-0">
+              Services
+            </h3>
             <ul className="space-y-2 text-black-600 cursor-pointer">
-              <li onClick={scrollToWhatWeDo}>Pre-IPO & Unlisted Equities </li>
-              <li onClick={scrollToWhatWeDo}>Wealth Managemnet Services</li> 
-              <li onClick={scrollToWhatWeDo}>Smart Model Portfolio</li> 
-              <li onClick={scrollToWhatWeDo}>Investment Banking</li>         
-              <li onClick={scrollToWhatWeDo}>Accounting & Tax Service Support</li>
-              <li onClick={scrollToWhatWeDo}>Startup Fundraise Support</li>
-              <li onClick={scrollToWhatWeDo}>Sustainable Investing</li>
+              <li onClick={scrollToPreipo}>Pre-IPO & Unlisted Equities </li>
+              <li onClick={scrollToWealth}>Wealth Management Services</li>
+              <li onClick={scrollToSmart}>Smart Model Portfolio</li>
+              <li onClick={scrollToInvestment}>Investment Banking</li>
+              <li onClick={scrollToAccounting}>
+                Accounting & Tax Service Support
+              </li>
+              <li onClick={scrollToStartup}>Startup Fundraise Support</li>
+              <li onClick={scrollToSustainable}>Sustainable Investing</li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold text-black-800 mb-4 text-[15px] ">Quick Link</h3>
+            <h3 className="font-semibold text-black-800 mb-4 text-[15px] mt-4 md:mt-0 ">
+              Quick Link
+            </h3>
             <ul className="space-y-2 text-black-800 cursor-pointer">
               <li onClick={() => navigateTo("hero-sec")}>Home</li>
               {/* <li onClick={() => navigateTo("hero-sec")}>About</li> No action needed */}
@@ -186,29 +268,10 @@ const Footer = () => {
 
           <div className="lg:col-span-1">
             <div className="grid grid-cols-1 md:grid-cols-1 gap-2">
-              {/* <div>
-                <h3 className="font-semibold text-black-800 mb-4">
-                  Contact Us
-                </h3>
-                <ul className="space-y-2 text-black-600">
-                  <li>
-                    <FontAwesomeIcon icon={faPhone} /> +1 925 915 6637
-                  </li>
-                  <li>
-                    <FontAwesomeIcon icon={faWhatsapp} /> +1 950 000 6123
-                  </li>
-                  <li>
-                    <FontAwesomeIcon icon={faEnvelope} /> rit@ritscapital.com
-                  </li>
-                  <li>
-                    <FontAwesomeIcon icon={faMapMarkerAlt} /> Suite 7000 Casper,
-                    WY 82609, USA
-                  </li>
-                </ul>
-              </div> */}
-
               <div>
-                <h3 className="font-semibold text-black-800 mb-4 text-[15px]">Subscribe</h3>
+                <h3 className="font-semibold text-black-800 mb-4 text-[15px] mt-4 md:mt-0">
+                  Subscribe
+                </h3>
                 <form onSubmit={handleSubmit}>
                   <div className="relative w-full flex items-center">
                     <input
@@ -234,7 +297,6 @@ const Footer = () => {
                     {successMessage}
                   </Alert>
                 )}
-               
               </div>
             </div>
             <div className="flex space-x-4 mt-4">
@@ -263,10 +325,20 @@ const Footer = () => {
         <div className="container mx-auto px-4 mt-8 flex flex-col md:flex-row justify-between items-center text-black-800">
           <p>Copyright © 2024 Rits Capital.</p>
           <div className="flex space-x-4">
-            <a href="/assets/termsofuse.pdf"  target="blank" rel="noopener noreferrer"  className="hover:text-black-800">
+            <a
+              href="/assets/termsofuse.pdf"
+              target="blank"
+              rel="noopener noreferrer"
+              className="hover:text-black-800"
+            >
               Terms of Use
             </a>
-            <a href="/assets/privacy.pdf" target="blank" rel="noopener noreferrer"  className="hover:text-black-800">
+            <a
+              href="/assets/privacy.pdf"
+              target="blank"
+              rel="noopener noreferrer"
+              className="hover:text-black-800"
+            >
               Privacy Policy
             </a>
           </div>
