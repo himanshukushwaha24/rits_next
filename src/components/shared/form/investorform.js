@@ -23,16 +23,16 @@ function InvestorForm() {
     const payload = {
       name: name,
       email: email,
-      sponsor: countryCode + contact,
-      message: countryCode + " " + contact + " Message: " + message,
+      contact: countryCode + contact,
+      message: message,
       website: "ritscapital.com",
     };
 
     try {
       // Send the data to the API
       const rawResponse = await fetch(
-        "https://api.khubero.com/website/contact",
-        // "http://localhost:5000/send-email",
+        // "https://api.khubero.com/website/contact",
+        "http://localhost:5000/send-email",
         // `${process.env.NEXT_PUBLIC_API_URL}/send-email`,
         {
           method: "POST",
@@ -48,7 +48,6 @@ function InvestorForm() {
 
       console.log("Contact:", contact);
       setShowSuccess(true);
-
       setName("");
       setContact("");
       setEmail("");
